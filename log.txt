@@ -1,0 +1,11 @@
+
+
+Git : https://github.com/ethicalden/edudenfinal / https://github.com/joySutradhor/c-eduden-next.git
+Live : https://c-eduden-next.vercel.app/
+Last fix : single page made and enroll now pop up 
+
+Maintain : send code fardeen sir 
+
+Platfrom : vercel - 29-10-25
+
+ 
