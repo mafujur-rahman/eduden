@@ -347,4 +347,3 @@ const CourseInfo = ({ course }) => {
 
 export default CourseInfo;
 
-

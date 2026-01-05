@@ -126,7 +126,7 @@ export const CourseData = [
     title: "Ethical Hacking for Beginners – 45 Days Hands-On Course",
     slug: "ethical-hacking-beginners",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/cyber%20security/Ethical%20Hacking%20For%20Beginners.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cyber%20Security/Ethical%20Hacking%20For%20Beginners.pdf",
     rating: 5,
     image:
       "https://ik.imagekit.io/0lnr4mwox/cybersecurity1.webp?updatedAt=1744658798433",
@@ -200,7 +200,7 @@ If you’re searching for the best ethical hacking training in Kolkata, India �
     category: "Artificial Intelligence",
     off: "15%",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/AI/Generative%20AI%20%26%20Prompt%20Engineering.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/AI/Generative%20AI%20%26%20Prompt%20Engineering.pdf",
     title: "Generative AI & Prompt Engineering – 45 Days Hands-On Course",
     slug: "generative-ai",
     rating: 4.8,
@@ -287,7 +287,7 @@ If you’re searching for the best ethical hacking training in Kolkata, India �
     slug: "ai-machine-learning-with-python",
     rating: 4.9,
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Machine%20Learning/AI%20%26%20Machine%20Learning%20with%20Python.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Machine%20Learning/AI%20%26%20Machine%20Learning%20with%20Python.pdf",
     image:
       "https://ik.imagekit.io/0lnr4mwox/AI-&-Machine-Learning-with-Python-2.webp?updatedAt=1744658786039",
 
@@ -367,7 +367,7 @@ If you’re searching for the best ethical hacking training in Kolkata, India �
       "Data Science & Analytics with Python + Power BI – 60 Days Career Track",
     slug: "data-science-analytics",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Data%20Science/Data%20Science.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Data%20Science/Data%20Science.pdf",
     rating: 4.8,
     image:
       "https://ik.imagekit.io/0lnr4mwox/DATA%20SCIENCE%20(2).webp?updatedAt=1744658798729",
@@ -455,7 +455,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
     title: "Python Programming – Gateway to AI & Machine Learning",
     slug: "python-programming",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/Python%20Programming.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/Python%20Programming.pdf",
     rating: 4,
     image:
       "https://ik.imagekit.io/0lnr4mwox/python%20for%20AI.webp?updatedAt=1744796636740",
@@ -524,7 +524,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
     projects: 6,
     category: "Blockchain",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Blockchain/Blockchain.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Blockchain/Blockchain.pdf",
     off: "10%",
     title: "Blockchain Essentials – Learn & Build Decentralized Systems",
     slug: "blockchain-essentials",
@@ -614,7 +614,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
     title: "IoT Foundations – 30 Days Hands-On Learning Program",
     slug: "iot-foundations",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/IoT/IoT%20Foundations.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/IOT/IoT%20Foundations.pdf",
     rating: 4.7,
     image:
       "https://ik.imagekit.io/0lnr4mwox/IoT-Foundations-1.webp?updatedAt=1744658808761",
@@ -704,7 +704,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
     title: "Big Data Engineering – Hadoop, Spark, Kafka Career Track",
     slug: "big-data-engineering",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Big%20Data/Big%20Data%20Engineering.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Big%20Data/Big%20Data%20Engineering.pdf",
     rating: 4.8,
     image:
       "https://ik.imagekit.io/0lnr4mwox/big-data-1.webp?updatedAt=1744658789924",
@@ -789,7 +789,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
     title: "Cloud Computing with AWS – Fundamentals (30 Days Hands-On)",
     slug: "cloud-aws",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Cloud%20Computing/Cloud%20Computing%20Architect%20with%20AWS.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cloud%20Computing/Cloud%20Computing%20with%20AWS.pdf",
     rating: 4.7,
     image:
       "https://ik.imagekit.io/0lnr4mwox/Cloud-Computing-with-AWS-1.webp?updatedAt=1744658795334",
@@ -881,7 +881,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
     title: "Linux Essentials – RHCE-Based Fundamentals",
     slug: "linux-essentials",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Linux/Linux%20Essentials.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Linux/Linux%20Essentials.pdf",
     rating: 4.7,
     image:
       "https://ik.imagekit.io/0lnr4mwox/RHCE-1.webp?updatedAt=1744658817346",
@@ -971,7 +971,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
     title: "DevOps for Beginners – Foundation Track",
     slug: "devops-beginners",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/DevOps/DevOps%20for%20Beginners.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Devops/DevOps%20for%20Beginners.pdf",
     rating: 4.7,
     image:
       "https://ik.imagekit.io/0lnr4mwox/devops-2.webp?updatedAt=1744658801353",
@@ -1061,7 +1061,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
     title: "Flutter App Development – 60 Days Hands-On Training",
     slug: "flutter-development",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/App%20Development/Flutter%20App%20Development.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/App%20Development/Flutter%20App%20Development.pdf",
     rating: 4.7, // Random rating between 4 and 5
     image:
       "https://ik.imagekit.io/0lnr4mwox/flutter%20developer.webp?updatedAt=1744658805499",
@@ -1139,7 +1139,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
     title: "Networking Zero – Foundation Course (Based on CCNA Syllabus)",
     slug: "networking-zero",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Networking/Networking%20Zero%20%E2%80%93%20Foundation%20Course%20(Based%20on%20CCNA%20Syllabus).pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Networking/Networking%20Zero%20%E2%80%93%20Foundation%20Course%20(Based%20on%20CCNA%20Syllabus).pdf",
     rating: 4.8,
     image:
       "https://ik.imagekit.io/0lnr4mwox/ccna1.webp?updatedAt=1744658790171",
@@ -1247,7 +1247,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
       {
         title1: "12 Assignments",
         description1:
-          "Assignment solutions will be posted on GitHub or Slack after the course for self-practice.",
+          "Assignment solutions will be posted on Slack after the course for self-practice.",
       },
       {
         title2: "30+ Quizzes",
@@ -1268,7 +1268,7 @@ No prior coding or analytics background? No problem. This course is beginner-fri
     slug: "graphic-design-visual-communication",
 
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Graphic%20Design/Graphic%20Designing%20and%20Visual%20Communication.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Graphic%20Design/Graphic%20Designing%20and%20Visual%20Communication.pdf",
     overView:
       " This is a fully practical, tool-driven course designed to take beginners into the world of graphic design and digital branding. Participants will learn how to use Adobe Illustrator like a pro, with a solid understanding of design principles, typography, composition, and color theory. Basic image editing with Photoshop is also covered to help students clean up, enhance, and prepare visual assets for real-world projects.",
 
@@ -1394,7 +1394,7 @@ From the basics of color psychology to mastering Adobe Illustrator and diving in
     title: "UI/UX Design – Industry-Ready Hands-On Course",
     slug: "ui-ux-design",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Graphic%20Design/UI%20UX%20Design%20Industry%20Ready%20Hands%20On%20Course.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Graphic%20Design/UI%20UX%20Design%20Industry%20Ready%20Hands%20On%20Course.pdf",
     rating: 4,
     image:
       "https://ik.imagekit.io/0lnr4mwox/UI%20UX.webp?updatedAt=1744658821854",
@@ -1464,7 +1464,7 @@ In 90 days, you’ll go from having no design experience to creating real-world 
     category: "Programming",
     off: "15%",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/Shell%20Scripting.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/Shell%20Scripting.pdf",
     title: "Shell Scripting – 30 Days Hands-On Training",
     slug: "shell-scripting",
     rating: 5,
@@ -1556,7 +1556,7 @@ Looking for the best shell scripting course in Kolkata, India or online across W
     title: "Python for Offensive PenTest – 45 Days Hands-On Training",
     slug: "python-pentest",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/Python%20for%20Offensive%20PenTest%2045.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/Python%20for%20Offensive%20PenTest%2045.pdf",
     rating: 5,
     image:
       "https://ik.imagekit.io/0lnr4mwox/pythonforoffensive.webp?updatedAt=1744658816133",
@@ -1641,7 +1641,7 @@ If you're searching for the best Python hacking course in India to learn how to 
     category: "Programming",
     off: "15%",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/Web%20Development%20Basics.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/Web%20Development%20Basics.pdf",
     title: "Web Development Basics – 45 Days Hands-On Course",
     slug: "web-development",
     rating: 5,
@@ -1733,7 +1733,7 @@ If you’re looking for the best beginner web development course in Kolkata, Wes
     title: "WordPress Mastery: Build, Design & Sell",
     slug: "wordpress-mastery",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/WordPress%20Mastery.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/WordPress%20Mastery.pdf",
     rating: 5,
     image:
       "https://ik.imagekit.io/0lnr4mwox/WordPress_Mastery-Build_Design__Sell1_50.webp?updatedAt=1744803010119",
@@ -1823,7 +1823,7 @@ If you're looking for the best WordPress and WooCommerce training in Kolkata, We
     category: "Programming",
     off: "15%",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/JavaScript%2C%20React%20%26%20Next%20Mastery.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/JavaScript%2C%20React%20%26%20Next%20Mastery.pdf",
     title: "JavaScript, React & Next.js Mastery – 90 Days Hands-On Training",
     slug: "react-nextjs",
     rating: 5,
@@ -1917,7 +1917,7 @@ Start by mastering modern JavaScript, then dive into React (the world’s most p
     title: " Backend Development with Django – 60 Days Hands-On Training",
     slug: "backend-django",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/Backend%20Development%20with%20Django.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/Backend%20Development%20with%20Django.pdf",
     rating: 5,
     image:
       "https://ik.imagekit.io/0lnr4mwox/Backend%20Development%20with%20Django2%20_%2060%20Days%20Hands-On%20Training.webp?updatedAt=1744658790375",
@@ -2103,7 +2103,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     category: "Programming",
     off: "10%",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/Database%20Mastery.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/Database%20Mastery.pdf",
     title:
       "Database Mastery: SQL + NoSQL (MongoDB & MariaDB) – 45 Days Hands-On Training",
     slug: "database-mastery",
@@ -2196,7 +2196,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Cybersecurity Advanced – Red Team/Blue Team Career Track",
     slug: "cybersecurity-advanced",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/cyber%20security/Cybersecurity%20Advanced.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cyber%20Security/Cybersecurity%20Advanced.pdf",
     rating: 4.9,
     image:
       "https://ik.imagekit.io/0lnr4mwox/redteamblueteam.webp?updatedAt=1744658817569",
@@ -2280,7 +2280,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Digital Forensics – 90 Days Hands-On Training",
     slug: "digital-forensics",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/cyber%20security/Digital%20Forensics.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cyber%20Security/Digital%20Forensics.pdf",
     rating: 5,
     image:
       "https://ik.imagekit.io/0lnr4mwox/digital%20Forensics.webp?updatedAt=1744658803008",
@@ -2369,7 +2369,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Start Bug Bounty Hunting – 50 Days Hands-On Training",
     slug: "bug-bounty",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/cyber%20security/Start%20Bug%20Bounty%20Hunting.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cyber%20Security/Start%20Bug%20Bounty%20Hunting.pdf",
     rating: 5,
     image:
       "https://ik.imagekit.io/0lnr4mwox/bug%20bounty%202.webp?updatedAt=1744658790037",
@@ -2444,7 +2444,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Network Penetration Testing – 45 Days Hands-On Course",
     slug: "network-pentest",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/cyber%20security/Android%20Application%20Penetration%20Testing%2045.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cyber%20Security/Network%20Penetration%20Testing.pdf",
     rating: 5,
     image: "https://ik.imagekit.io/0lnr4mwox/npt2.webp?updatedAt=1744658813702",
 
@@ -2536,7 +2536,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "SOC Analyst – 60 Days Hands-On Training",
     slug: "soc-analyst",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/cyber%20security/SOC%20Analyst.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cyber%20Security/SOC%20Analyst.pdf",
     rating: 4.3, // Random rating between 4 and 5
     image:
       "https://ik.imagekit.io/0lnr4mwox/SOC%20analyst.webp?updatedAt=1744658819727",
@@ -2628,7 +2628,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Cloud Security – 60 Days Hands-On Training",
     slug: "cloud-security",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/cyber%20security/Cloud%20Security.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cyber%20Security/Cloud%20Security.pdf",
     rating: 4.5, // Random rating between 4 and 5
     image:
       "https://ik.imagekit.io/0lnr4mwox/cloud%20secutiy.webp?updatedAt=1744658794164",
@@ -2721,7 +2721,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
       "Android Application Penetration Testing – Basics (30 Days Hands-On Course)",
     slug: "android-pentest-basics",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/cyber%20security/Network%20Penetration%20Testing.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cyber%20Security/Android%20Application%20Penetration%20Testing%2030.pdf",
     rating: 4.6, // Random rating between 4 and 5
     image:
       "https://ik.imagekit.io/0lnr4mwox/android%20application%20penetration%20testing%201.webp?updatedAt=1744658785732",
@@ -2812,7 +2812,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
       "Android Application Penetration Testing – Advanced (45 Days Hands-On Course)",
     slug: "android-pentest-advanced",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/cyber%20security/Android%20Application%20Penetration%20Testing%2045.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cyber%20Security/Android%20Application%20Penetration%20Testing%2045.pdf",
     rating: 4.8, // Random rating between 4 and 5
     image:
       "https://ik.imagekit.io/0lnr4mwox/android%20application%20security.webp?updatedAt=1744658785739",
@@ -2903,7 +2903,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     category: "Application Development",
     off: "20%", // Random discount between 5% and 20%
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/App%20Development/Mobile%20App%20Development%20with%20React%20Native.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/App%20Development/Mobile%20App%20Development%20with%20React%20Native.pdf",
     title:
       "Mobile App Development with React Native – 60 Days Hands-On Training",
     slug: "react-native",
@@ -2983,7 +2983,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "iOS App Development with Swift – 60 Days Hands-On Training",
     slug: "ios-development",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/App%20Development/iOS%20App%20Development%20with%20Swift.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/App%20Development/iOS%20App%20Development%20with%20Swift.pdf",
     rating: 4.9, // high rating for premium iOS course
     image:
       "https://ik.imagekit.io/0lnr4mwox/swift1.webp?updatedAt=1744658820529",
@@ -3071,7 +3071,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     category: "Application Development",
     off: "15%",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/App%20Development/Full%20Stack%20Mobile%20App%20Development.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/App%20Development/Full%20Stack%20Mobile%20App%20Development.pdf",
     title:
       "Full Stack Mobile App Development – Flutter + Django (90 Days Hands-On)",
     slug: "fullstack-mobile",
@@ -3164,7 +3164,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "SEO Mastery – 30 Days Hands-On Training",
     slug: "seo-mastery",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Digital%20marketing/SEO%20Mastery%20%E2%80%93%2030%20Days%20Hands-On%20Training.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Digital%20Marketing/SEO%20Mastery%20%E2%80%93%2030%20Days%20Hands-On%20Training.pdf",
     rating: 4.7,
     image: "https://ik.imagekit.io/0lnr4mwox/SEO1.webp?updatedAt=1744658818092",
 
@@ -3248,7 +3248,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Advanced Digital Marketing + SEO – 90 Days Hands-On Training",
     slug: "digital-marketing-seo",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Digital%20marketing/Advanced%20Digital%20Marketing%20%2B%20SEO%20%E2%80%93%2090%20Days%20Hands-On%20Training%20(3).pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Digital%20Marketing/Advanced%20Digital%20Marketing%20%2B%20SEO%20%E2%80%93%2090%20Days%20Hands-On%20Training.pdf",
     rating: 4.9,
     image:
       "https://ik.imagekit.io/0lnr4mwox/Digital%20Marketing%20Advanced1.webp?updatedAt=1744658804330",
@@ -3342,7 +3342,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Networking Advanced – Routing Mastery (CCNP + CCIE Syllabus Based)",
     slug: "networking-routing",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Networking/Networking%20Advanced%20%E2%80%93%20Routing%20Mastery%20(CCNP%20%2B%20CCIE%20Syllabus%20Based).pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Networking/Networking%20Advanced%20%E2%80%93%20Routing%20Mastery%20(CCNP%20%2B%20CCIE%20Syllabus%20Based).pdf",
     rating: 4.9,
     image:
       "https://ik.imagekit.io/0lnr4mwox/ccnp-routing11.webp?updatedAt=1744658793897",
@@ -3434,7 +3434,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Networking Advanced – Switching Mastery (CCNP/CCIE Based)",
     slug: "networking-switching",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Networking/Networking%20Advanced%20%E2%80%93%20Switching%20Mastery%20(CCNP-CCIE%20Based).pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Networking/Networking%20Advanced%20%E2%80%93%20Switching%20Mastery%20(CCNP-CCIE%20Based).pdf",
     rating: 4.8,
     image:
       "https://ik.imagekit.io/0lnr4mwox/ccnp-switching.webp?updatedAt=1744658793667",
@@ -3529,7 +3529,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Cloud Computing Architect with AWS – 90 Days Career Track",
     slug: "cloud-architect-aws",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Cloud%20Computing/Cloud%20Computing%20Architect%20with%20AWS.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cloud%20Computing/Cloud%20Computing%20Architect%20with%20AWS.pdf",
     rating: 4.8,
     image:
       "https://ik.imagekit.io/0lnr4mwox/Cloud-Computing-Architect-with-AWS-2.webp?updatedAt=1744658795559",
@@ -3620,7 +3620,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Cloud Computing with Azure – 45 Days Fundamentals + Projects",
     slug: "cloud-azure",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Cloud%20Computing/Cloud%20Computing%20with%20Azure.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cloud%20Computing/Cloud%20Computing%20with%20Azure.pdf",
     rating: 4.7,
     image:
       "https://ik.imagekit.io/0lnr4mwox/Cloud-Computing-with-Azure-2.webp?updatedAt=1744658796609",
@@ -3709,7 +3709,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "CloudOps Pro – DevOps + Cloud Engineering Training (AWS + Azure)",
     slug: "cloudops-pro",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Cloud%20Computing/CloudOps%20Pro.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Cloud%20Computing/CloudOps%20Pro.pdf",
     rating: 4.8,
     image:
       "https://ik.imagekit.io/0lnr4mwox/CloudOps-Pro-_-DevOps-+-Cloud-Engineering-Training-(AWS-+-Azure)-2.webp?updatedAt=1744658798238",
@@ -3798,7 +3798,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "DevOps Mastery – 90 Days Advanced Career Track",
     slug: "devops-mastery",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/DevOps/DevOps%20Mastery.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Devops/DevOps%20Mastery.pdf",
     rating: 4.8,
     image:
       "https://ik.imagekit.io/0lnr4mwox/DEVOPS-ADVANCE-2.webp?updatedAt=1744658802267",
@@ -3889,7 +3889,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Linux Pro – Advanced Server Admin & Automation (RHCE Focused)",
     slug: "linux-pro",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Linux/Linux%20Pro.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Linux/Linux%20Pro.pdf",
     rating: 4.8,
     image:
       "https://ik.imagekit.io/0lnr4mwox/adv%202.webp?updatedAt=1744658785688",
@@ -3982,7 +3982,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Diploma in Full Stack Programming – 9 Months Career Track",
     slug: "fullstack-diploma",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/Diploma%20in%20Full%20Stack%20Programming.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/Diploma%20in%20Full%20Stack%20Programming.pdf",
     rating: 4.9,
     image:
       "https://ik.imagekit.io/0lnr4mwox/fullstack1.webp?updatedAt=1744658807249",
@@ -4070,7 +4070,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "MERN Stack Developer – 6 Months Hands-On Training",
     slug: "mern-stack",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/MERN%20Stack%20Developer.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/MERN%20Stack%20Developer.pdf",
     rating: 4.8,
     image: "https://ik.imagekit.io/0lnr4mwox/mern.webp?updatedAt=1744658812080",
 
@@ -4150,7 +4150,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "Web3 & dApp Development – Full Stack Blockchain in 60 Days",
     slug: "web3-dapp",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Programming/Web3%20%26%20dApp%20Development.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Programming/Web3%20%26%20dApp%20Development.pdf",
     rating: 3.7,
     image: "https://ik.imagekit.io/0lnr4mwox/web3.webp?updatedAt=1744658823795",
 
@@ -4230,7 +4230,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     title: "AI-Powered Digital Marketing – Hands-On in 60 Days",
     slug: "ai-digital-marketing",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Digital%20marketing/AI-Powered%20Digital%20Marketing%20%E2%80%93%20Hands-On%20in%2060%20Days.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Digital%20Marketing/AI-Powered%20Digital%20Marketing%20%E2%80%93%20Hands-On%20in%2060%20Days.pdf",
     rating: 4.8,
     image:
       "https://ik.imagekit.io/0lnr4mwox/Digital%20Marketing%20with%20AI.webp?updatedAt=1744658804205",
@@ -4310,7 +4310,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     category: "Artificial Intelligence",
     off: "20%",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/AI/Deep%20Learning%20%26%20Neural%20Networks%20with%20TensorFlow%20%26%20Keras.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/AI/Deep%20Learning%20%26%20Neural%20Networks%20with%20TensorFlow%20%26%20Keras.pdf",
     title:
       "Deep Learning & Neural Networks with TensorFlow & Keras – 60 Days Hands-On Training",
     slug: "deep-learning",
@@ -4393,7 +4393,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     off: "15%",
 
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/AI/Applied%20AI%20in%20Healthcare%2C%20Finance%20%26%20Marketing.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/AI/Applied%20AI%20in%20Healthcare%2C%20Finance%20%26%20Marketing.pdf",
     title:
       "Applied AI in Healthcare, Finance & Marketing – 45 Days Industry-Focused Course",
     slug: "applied-ai",
@@ -4469,7 +4469,7 @@ Looking for the best Django backend training in Kolkata, West Bengal, or anywher
     category: "Artificial Intelligence",
     off: "10%",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/AI/Natural%20Language%20Processing%20(NLP).pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/AI/Natural%20Language%20Processing%20(NLP).pdf",
     title:
       "Natural Language Processing (NLP) & LLMs with Hugging Face – 60 Days Hands-On Course",
     slug: "nlp-llms",
