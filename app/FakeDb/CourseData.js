@@ -1299,20 +1299,20 @@ From the basics of color psychology to mastering Adobe Illustrator and diving in
 
   {
     id: 24,
-    lecture: "48",
-    duration: "6 Months",
+    lecture: "24",
+    duration: "30 Days",
     projects: 5,
     category: "Digital Marketing",
     off: "10%",
     slug: "advanced-digital-marketing",
-    title: "Advanced Digital Marketing 6 Months Hands-On Training",
+    title: "Digital Marketing Basics – 30 Days Hands-On Training",
     download:
-      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/eduden-website-brochure/Digital%20marketing/Advanced%20Digital%20Marketing%206%20Month%20Hands-On%20Training.pdf",
+      "https://pub-67d26340d4ea42ecaf64e12090b2ba05.r2.dev/Digital%20Marketing/Digital%20Marketing%20Basics%20%E2%80%93%2030%20Days%20Hands-On%20Training.pdf",
     rating: 4.6,
     image:
       "https://ik.imagekit.io/0lnr4mwox/Digital%20Marketing%202.webp?updatedAt=1744658803876",
 
-    crsDetails: `This 6 months hybrid course (Online & Offline at Eduden, Kolkata) introduces you to the core of digital marketing. Learn how to rank websites, grow social media, run ads, and send campaigns. Ideal for students, freelancers, creators, or startup founders ready to market any product, brand, or idea in the digital world.`,
+    crsDetails: `This 30 Days hybrid course (Online & Offline at Eduden, Kolkata) introduces you to the core of digital marketing. Learn how to rank websites, grow social media, run ads, and send campaigns. Ideal for students, freelancers, creators, or startup founders ready to market any product, brand, or idea in the digital world.`,
 
     overView: `Fast, practical, and beginner-friendly — this course will give you a complete understanding of advanced digital marketing platforms, strategies, and tools. You’ll practice SEO, SMM, Email Marketing, and Ads setup through real-life use cases. Perfect for learners aiming to freelance, grow their personal brand, or land marketing roles.`,
 
@@ -1380,7 +1380,7 @@ From the basics of color psychology to mastering Adobe Illustrator and diving in
 
     interview:
       "Upon completion of the course, students will always be interviewed to assess their skills and readiness for practical applications.",
-      hour: "90hr"
+      hour: "30hr"
   },
 
   {
