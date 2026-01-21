@@ -1,3 +1,5 @@
+import VerifyCmp from "@/components/VerifyCmp/VerifyCmp";
+
 export const metadata = {
   title: "eduden | verify",
   description:
@@ -7,9 +9,10 @@ export const metadata = {
 export default function page() {
   return (
     <div>
-      <div className="edn__hero__container">
+      {/* <div className="edn__hero__container">
         <h2 className="edn__title text-black">Coming Soon ....</h2>
-      </div>
+      </div> */}
+      <VerifyCmp />
     </div>
   );
 }
