@@ -1,51 +1,51 @@
+"use client";
+
 import { faculty } from "../../FakeDb/faculty";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
-// Generate metadata for SEO
-export async function generateMetadata({ params }) {
+export default function PortfolioPage() {
+  const params = useParams();
   const { slug } = params;
-  const person = faculty.find((p) => p.slug === slug);
+  const [person, setPerson] = useState(null);
+
+  useEffect(() => {
+    if (person) {
+      document.title = `${person.name} - ${person.title} | eduden`;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content',
+          person.about || `Learn more about ${person.name}, ${person.title} at eduden.`
+        );
+      }
+    }
+  }, [person]);
+
+  useEffect(() => {
+    if (slug) {
+      const foundPerson = faculty.find((p) => p.slug === slug);
+      setPerson(foundPerson);
+    }
+  }, [slug]);
 
   if (!person) {
-    return {
-      title: "Profile Not Found | eduden",
-      description: "The requested faculty profile could not be found.",
-    };
-  }
-
-  return {
-    title: `${person.name} - ${person.title} | eduden`,
-    description:
-      person.about ||
-      `Learn more about ${person.name}, ${person.title} at eduden.`,
-  };
-}
-
-export default function PortfolioPage({ params }) {
-  const { slug } = params;
-  const person = faculty.find((p) => p.slug === slug);
-
-  if (!person) {
-    return <div className="p-10 text-center">Profile not found.</div>;
+    return <div className="p-10 text-center">Loading or profile not found.</div>;
   }
 
   return (
     <div className="">
-      {/* Hero */}
       <div className="edn__hero__container">
         <h1 className="edn__title text-black">{person.name}</h1>
       </div>
 
-      {/* Main Content */}
       <div className="space-y-10 edn__lr__space edn__space__top">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:items-start xl:items-center">
-          {/* Image */}
           <img
             src={person.image}
             alt={`${person.name} - ${person.title}`}
             className="w-full h-64 md:h-[85vh] rounded-xl object-cover object-top shadow-lg"
           />
 
-          {/* Details */}
           <div>
             <h2 className="text-3xl md:text-4xl font-gucina font-bold text-[#ffd300]">
               {person.name}
@@ -53,7 +53,6 @@ export default function PortfolioPage({ params }) {
             <p className="text-gray-400 font-medium mt-1 font-lexend">{person.title}</p>
             <p className="mt-4 text-gray-300 leading-relaxed font-lexend">{person.about}</p>
 
-            {/* Expertise */}
             {person.expertise?.length > 0 && (
               <div className="mt-6">
                 <h3 className="text-2xl md:text-3xl mb-4 font-gucina font-semibold text-white">
@@ -72,7 +71,6 @@ export default function PortfolioPage({ params }) {
               </div>
             )}
 
-            {/* Description / Insights */}
             {person.des?.length > 0 && (
               <div className="mt-8">
                 <h3 className="text-2xl md:text-3xl mb-4 font-semibold text-white">

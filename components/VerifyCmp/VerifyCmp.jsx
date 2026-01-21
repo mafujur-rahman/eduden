@@ -40,11 +40,11 @@ export default function VerifyCmp() {
 
             {/* Search */}
             <div className="max-w-6xl mx-auto">
-                <div className="relative flex items-center gap-6 px-10 py-6 bg-white">
+                <div className="relative flex items-center gap-6 px-10 py-6 bg-white rounded-2xl">
 
                     {/* Gradient stroke */}
-                    <span className="absolute inset-0 p-[1px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01]">
-                        <span className="block h-full w-full bg-white" />
+                    <span className="absolute inset-0 p-[1px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
+                        <span className="block h-full w-full bg-white rounded-2xl" />
                     </span>
 
                     <div className="relative z-10 flex items-center gap-6 w-full">
@@ -69,6 +69,7 @@ export default function VerifyCmp() {
                     </div>
                 </div>
             </div>
+
 
             {student && (
                 <div className="verify-sheet max-w-6xl mx-auto mt-28">
