@@ -59,7 +59,7 @@ export default function VerifyCmp() {
 
                         <button
                             onClick={verify}
-                            className="relative overflow-hidden px-8 py-3 text-sm tracking-widest uppercase font-medium border border-transparent"
+                            className="relative overflow-hidden px-8 py-3 text-sm tracking-widest uppercase font-medium border border-transparent rounded-full"
                         >
                             <span className="absolute inset-0 bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] transition" />
                             <span className="relative text-black hover:text-black">
