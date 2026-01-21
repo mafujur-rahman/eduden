@@ -80,92 +80,36 @@ const placements = [
 ];
 
 export default function PlacementCmp() {
-  const cardsRef = useRef([]);
-
-  useEffect(() => {
-    cardsRef.current.forEach((card) => {
-      if (!card) return;
-
-      const img = card.querySelector(".img-3d");
-
-      card.addEventListener("mouseenter", () => {
-        gsap.to(img, {
-          rotateY: 22,
-          rotateX: -14,
-          scale: 1.1,
-          z: 70,
-          duration: 0.6,
-          ease: "power3.out",
-        });
-      });
-
-      card.addEventListener("mouseleave", () => {
-        gsap.to(img, {
-          rotateY: 0,
-          rotateX: 0,
-          scale: 1,
-          z: 0,
-          duration: 0.6,
-          ease: "power3.out",
-        });
-      });
-    });
-  }, []);
-
   return (
     <section className="px-[5vw] py-24 bg-white">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8">
         {placements.map((item, i) => (
-          <div
-            key={i}
-            ref={(el) => (cardsRef.current[i] = el)}
-            className="group perspective-[1400px]"
-          >
-            {/* Border */}
-            <div className="relative rounded-2xl bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] p-[3px] shadow-xl">
-              
+          <div key={i}>
+            {/* Gradient Border */}
+            <div className="relative p-[2px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl shadow-xl">
               {/* Card */}
-              <div className="rounded-[26px] bg-white px-5 pb-6 pt-10 text-center">
-                
-                {/* Triangle */}
-                <div
-                  className="img-3d relative mx-auto h-60 w-60 transform-style-preserve-3d"
-                  style={{
-                    clipPath:
-                      "polygon(50% 0%, 100% 35%, 80% 100%, 20% 100%, 0% 35%)",
-                  }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] p-[4px]">
-                    <div
-                      className="relative h-full w-full bg-white overflow-hidden"
-                      style={{
-                        clipPath:
-                          "polygon(50% 0%, 100% 35%, 80% 100%, 20% 100%, 0% 35%)",
-                      }}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
+              <div className="relative bg-white rounded-2xl overflow-hidden text-center px-5 pb-6 pt-10">
+
+                {/* Image */}
+                <div className="relative aspect-square bg-white rounded-2xl overflow-hidden mx-auto w-60 h-60">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
 
                 {/* Text */}
-                <h3 className="mt-6 text-lg lg:text-2xl font-semibold text-gray-900">
+                <h3 className="mt-4 text-lg lg:text-2xl font-semibold text-gray-900">
                   {item.name}
                 </h3>
-
                 <p className="text-sm lg:text-xl font-medium text-[#fab80A]">
                   {item.role}
                 </p>
-
                 <p className="text-sm lg:text-xl text-gray-500">
                   {item.company}
                 </p>
-
               </div>
             </div>
           </div>
