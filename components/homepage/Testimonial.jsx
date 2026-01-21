@@ -80,7 +80,7 @@ const Testimonial = () => {
 
                     {/* Star Rating */}
                     <div className="edn__star__rating">
-                      <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
+                      <FaStar /> <FaStar /> <FaStar /> <FaStar /> 
                     </div>
                   </div>
 
@@ -142,7 +142,7 @@ const Testimonial = () => {
                     />
 
                     <div className="edn__star__rating">
-                      <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
+                      <FaStar /> <FaStar /> <FaStar /> <FaStar />
                     </div>
                   </div>
 
@@ -270,7 +270,7 @@ const Testimonial = () => {
 
                     {/* Star Rating */}
                     <div className="flex items-center mb-[10px] text-[#FFD300] gap-x-[6px] pr-[20px]">
-                      <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
+                      <FaStar /> <FaStar /> <FaStar /> 
                     </div>
                   </div>
 
@@ -308,7 +308,7 @@ const Testimonial = () => {
 
                     {/* Star Rating */}
                     <div className="flex items-center mb-[10px] text-[#FFD300] gap-x-[6px] pr-[20px]">
-                      <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
+                      <FaStar /> <FaStar /> <FaStar /> <FaStar /> 
                     </div>
                   </div>
 
@@ -374,7 +374,7 @@ const Testimonial = () => {
 
                     {/* Star Rating */}
                     <div className="flex items-center mb-[10px] text-[#FFD300] gap-x-[6px] pr-[20px]">
-                      <FaStar /> <FaStar /> <FaStar /> <FaStar /> <FaStar />
+                      <FaStar /> <FaStar /> <FaStar /> <FaStar /> 
                     </div>
                   </div>
 

@@ -113,15 +113,23 @@ const Footer = () => {
 
         <div>
           <h2 className="edn__small__title mb-3">Other Brands</h2>
+
           {learningLinks.map((link, i) => (
-            <Link href={link.href} target="_blank" key={i}>
-              <p className="flex items-center gap-2 text-[#FFD300] mb-2 hover:underline edn__base__text">
-                <MdOutlineArrowRight size={18} />
-                {link.text}
-              </p>
-            </Link>
+            <p
+              key={i}
+              className="flex items-center gap-2 text-[#FFD300] mb-2 edn__base__text"
+            >
+              <MdOutlineArrowRight size={18} />
+
+              <Link href={link.href} target="_blank">
+                <span className="hover:underline cursor-pointer">
+                  {link.text}
+                </span>
+              </Link>
+            </p>
           ))}
         </div>
+
 
         {/* Contact Info */}
         <div>
