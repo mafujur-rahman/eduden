@@ -79,20 +79,21 @@ const placements = [
   },
 ];
 
-
 export default function PlacementCmp() {
   const cardsRef = useRef([]);
 
   useEffect(() => {
     cardsRef.current.forEach((card) => {
+      if (!card) return;
+
       const img = card.querySelector(".img-3d");
 
       card.addEventListener("mouseenter", () => {
         gsap.to(img, {
-          rotateY: 18,
-          rotateX: -12,
-          scale: 1.08,
-          z: 60,
+          rotateY: 22,
+          rotateX: -14,
+          scale: 1.1,
+          z: 70,
           duration: 0.6,
           ease: "power3.out",
         });
@@ -113,31 +114,28 @@ export default function PlacementCmp() {
 
   return (
     <section className="px-[5vw] py-24 bg-white">
-
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8 ">
         {placements.map((item, i) => (
           <div
             key={i}
             ref={(el) => (cardsRef.current[i] = el)}
-            className="group perspective-[1200px]"
+            className="group perspective-[1400px]"
           >
-            {/* Card */}
-            <div
-              className="relative rounded-3xl bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01]
-                         p-[2px] shadow-xl"
-            >
-              <div className="rounded-3xl bg-white px-6 pb-10 pt-14 text-center">
-                {/* Triangle Image */}
+            {/* Border */}
+            <div className="relative rounded-2xl bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] p-[3px] shadow-xl">
+              
+              {/* Card */}
+              <div className="rounded-[26px] bg-white px-5 pb-6 pt-10 text-center">
+                
+                {/* Triangle */}
                 <div
-                  className="img-3d relative mx-auto h-44 w-44 
-                             transform-style-preserve-3d"
+                  className="img-3d relative mx-auto h-60 w-60 transform-style-preserve-3d"
                   style={{
                     clipPath:
                       "polygon(50% 0%, 100% 35%, 80% 100%, 20% 100%, 0% 35%)",
                   }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] p-[3px]">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] p-[4px]">
                     <div
                       className="relative h-full w-full bg-white overflow-hidden"
                       style={{
@@ -156,15 +154,18 @@ export default function PlacementCmp() {
                 </div>
 
                 {/* Text */}
-                <h3 className="mt-8 text-lg font-semibold text-gray-900">
+                <h3 className="mt-6 text-lg lg:text-2xl font-semibold text-gray-900">
                   {item.name}
                 </h3>
-                <p className="text-sm font-medium text-[#fab80A]">
+
+                <p className="text-sm lg:text-xl font-medium text-[#fab80A]">
                   {item.role}
                 </p>
-                <p className="text-sm text-gray-500">
+
+                <p className="text-sm lg:text-xl text-gray-500">
                   {item.company}
                 </p>
+
               </div>
             </div>
           </div>
