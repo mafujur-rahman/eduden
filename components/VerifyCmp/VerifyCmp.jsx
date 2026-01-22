@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Search } from "lucide-react";
+import { Search, Download } from "lucide-react";
 import { HiOutlineAcademicCap } from "react-icons/hi2";
 import { MdWorkOutline, MdOutlineDateRange } from "react-icons/md";
 import gsap from "gsap";
@@ -33,6 +33,23 @@ export default function VerifyCmp() {
                 { y: 0, opacity: 1, duration: 1, ease: "power4.out" }
             );
         }, 80);
+    };
+
+    const handleDownloadCertificate = () => {
+        if (!student?.certificate) return;
+
+        // Create a temporary anchor element
+        const link = document.createElement("a");
+        link.href = student.certificate;
+        
+        // Extract filename from the certificate path or use student name
+        const fileName = `certificate-${student.name.replace(/\s+/g, '-').toLowerCase()}.png`;
+        link.download = fileName;
+        
+        // Append to body, click, and remove
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     };
 
     return (
@@ -154,10 +171,20 @@ export default function VerifyCmp() {
                         </div>
                     </div>
 
-                    {/* Certificate Label (outside) */}
-                    <p className="mt-20 mb-6 text-lg font-semibold text-gray-700">
-                        Official Certificate of Completion
-                    </p>
+                    {/* Certificate Header with Download Button */}
+                    <div className="mt-20 flex justify-between items-center mb-6">
+                        <p className="text-lg font-semibold text-gray-700">
+                            Official Certificate of Completion
+                        </p>
+                        
+                        <button
+                            onClick={handleDownloadCertificate}
+                            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] text-black rounded-full font-medium hover:opacity-90 transition-opacity"
+                        >
+                            <Download size={18} />
+                            Download Certificate
+                        </button>
+                    </div>
 
                     {/* Certificate */}
                     <div className="relative p-[2px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
