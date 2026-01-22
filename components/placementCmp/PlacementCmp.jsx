@@ -119,7 +119,7 @@ const jobListings = [
   },
 ];
 
-export default function JobBoard() {
+export default function PlacementCmp() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedType, setSelectedType] = useState("All");
   const [selectedExperience, setSelectedExperience] = useState("All");
@@ -168,38 +168,29 @@ export default function JobBoard() {
   }, [filteredJobs, selectedJob]);
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-20 ">
-      <div className="edn__lr__space">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Career Opportunities
-          </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Discover your next career move with our curated job listings.
-            Search by role, location, or company to find the perfect match.
-          </p>
-        </div>
+    <section className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-8 sm:py-12 md:py-16 lg:py-20">
+      <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto max-w-[1920px]">
+        
 
         {/* Search and Filter Bar */}
-        <div className="mb-8 space-y-4">
-          <div className="flex flex-col md:flex-row gap-4">
+        <div className="mb-6 sm:mb-8 space-y-4">
+          <div className="flex flex-col md:flex-row gap-3 sm:gap-4">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4 sm:h-5 sm:w-5" />
                 <input
                   type="text"
                   placeholder="Search jobs by title, company, or keyword..."
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                  className="w-full pl-9 sm:pl-10 pr-4 py-2.5 sm:py-3 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-sm sm:text-base"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex flex-wrap sm:flex-nowrap gap-2">
               <select
-                className="px-4 py-3 border border-gray-300 rounded-lg text-black focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                className="px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg text-black focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-sm sm:text-base flex-1 min-w-[140px]"
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
               >
@@ -209,7 +200,7 @@ export default function JobBoard() {
               </select>
 
               <select
-                className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 text-black focus:ring-yellow-500 focus:border-transparent"
+                className="px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 text-black focus:ring-yellow-500 focus:border-transparent text-sm sm:text-base flex-1 min-w-[140px]"
                 value={selectedExperience}
                 onChange={(e) => setSelectedExperience(e.target.value)}
               >
@@ -221,51 +212,51 @@ export default function JobBoard() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <button
-              className={`px-4 py-2 rounded-lg flex items-center gap-2 ${remoteOnly
+              className={`px-3 sm:px-4 py-2 rounded-lg flex items-center gap-2 text-sm sm:text-base ${remoteOnly
                   ? "bg-yellow-100 text-yellow-700 border border-yellow-300"
                   : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
                 }`}
               onClick={() => setRemoteOnly(!remoteOnly)}
             >
-              <Filter className="h-4 w-4" />
+              <Filter className="h-3 w-3 sm:h-4 sm:w-4" />
               Remote Only
             </button>
-            <span className="text-sm text-gray-500">
+            <span className="text-xs sm:text-sm text-gray-500">
               {filteredJobs.length} job{filteredJobs.length !== 1 ? 's' : ''} found
             </span>
           </div>
         </div>
 
-        {/* Main Content - Fixed height container */}
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Job List - Fixed height to match right side */}
-          <div className="lg:w-2/5 h-fit lg:h-full">
-            <div className="space-y-4 lg:max-h-[800px] overflow-y-auto pr-2">
+        {/* Main Content */}
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 md:gap-8">
+          {/* Job List */}
+          <div className="lg:w-2/5">
+            <div className="space-y-3 sm:space-y-4 max-h-[600px] sm:max-h-[700px] md:max-h-[800px] overflow-y-auto pr-1 sm:pr-2">
               {filteredJobs.map((job) => (
                 <div
                   key={job.id}
-                  className={`p-6 rounded-xl border cursor-pointer transition-all duration-200 hover:shadow-lg ${selectedJob?.id === job.id
+                  className={`p-4 sm:p-5 md:p-6 rounded-xl border cursor-pointer transition-all duration-200 hover:shadow-lg ${selectedJob?.id === job.id
                       ? "border-yellow-500 bg-yellow-50 shadow-md"
                       : "border-gray-200 bg-white hover:border-gray-300"
                     }`}
                   onClick={() => setSelectedJob(job)}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                      <Building2 className="h-6 w-6 text-gray-600" />
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600" />
                     </div>
 
-                    <div className="flex-1">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-semibold text-gray-900 text-lg">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-gray-900 text-base sm:text-lg truncate">
                             {job.title}
                           </h3>
-                          <p className="text-gray-700 font-medium">{job.company}</p>
+                          <p className="text-gray-700 font-medium text-sm sm:text-base truncate">{job.company}</p>
                         </div>
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${job.type === "Full-time"
+                        <span className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium self-start ${job.type === "Full-time"
                             ? "bg-green-100 text-green-800"
                             : "bg-purple-100 text-purple-800"
                           }`}>
@@ -273,13 +264,13 @@ export default function JobBoard() {
                         </span>
                       </div>
 
-                      <div className="mt-4 flex flex-wrap gap-3">
-                        <span className="flex items-center gap-1 text-gray-600">
-                          <MapPin className="h-4 w-4" />
-                          {job.location}
+                      <div className="mt-3 sm:mt-4 flex flex-wrap gap-2 sm:gap-3">
+                        <span className="flex items-center gap-1 text-gray-600 text-xs sm:text-sm">
+                          <MapPin className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                          <span className="truncate">{job.location}</span>
                         </span>
-                        <span className="flex items-center gap-1 text-gray-600">
-                          <Briefcase className="h-4 w-4" />
+                        <span className="flex items-center gap-1 text-gray-600 text-xs sm:text-sm">
+                          <Briefcase className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                           {job.experience}
                         </span>
                         {job.remote && (
@@ -289,17 +280,17 @@ export default function JobBoard() {
                         )}
                       </div>
 
-                      <div className="mt-3">
-                        <p className="text-gray-600 line-clamp-2">
+                      <div className="mt-2 sm:mt-3">
+                        <p className="text-gray-600 line-clamp-2 text-sm sm:text-base">
                           {job.description}
                         </p>
                       </div>
 
-                      <div className="mt-4">
+                      <div className="mt-3 sm:mt-4">
                         <p className="text-sm font-medium text-gray-900">
                           {job.salary}
                         </p>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs sm:text-sm text-gray-500">
                           Posted {new Date(job.postedDate).toLocaleDateString()}
                         </p>
                       </div>
@@ -309,14 +300,14 @@ export default function JobBoard() {
               ))}
 
               {filteredJobs.length === 0 && (
-                <div className="text-center py-12">
-                  <div className="text-gray-400 mb-4">
-                    <Search className="h-12 w-12 mx-auto" />
+                <div className="text-center py-8 sm:py-12">
+                  <div className="text-gray-400 mb-3 sm:mb-4">
+                    <Search className="h-8 w-8 sm:h-12 sm:w-12 mx-auto" />
                   </div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                  <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2">
                     No jobs found
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-sm sm:text-base">
                     Try adjusting your search filters or browse all positions
                   </p>
                 </div>
@@ -324,67 +315,67 @@ export default function JobBoard() {
             </div>
           </div>
 
-          {/* Job Details - Fixed height to match left side */}
-          <div className="lg:w-3/5 h-fit lg:h-full">
+          {/* Job Details */}
+          <div className="lg:w-3/5">
             {selectedJob ? (
-              <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden h-full flex flex-col">
+              <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden flex flex-col h-full">
                 {/* Header with yellow gradient */}
-                <div className="bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] p-8 text-gray-900">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h2 className="text-2xl font-bold mb-2">{selectedJob.title}</h2>
-                      <p className="text-xl font-medium">{selectedJob.company}</p>
+                <div className="bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] p-4 sm:p-6 md:p-8 text-gray-900">
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+                    <div className="flex-1 min-w-0">
+                      <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 truncate">{selectedJob.title}</h2>
+                      <p className="text-lg sm:text-xl font-medium truncate">{selectedJob.company}</p>
                     </div>
-                    <button className="bg-white text-gray-900 hover:bg-gray-100 px-6 py-3 rounded-full font-semibold transition-colors border border-gray-300 shadow-sm">
+                    <button className="bg-white text-gray-900 hover:bg-gray-100 px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-colors border border-gray-300 shadow-sm text-sm sm:text-base w-full sm:w-auto">
                       Apply Now
                     </button>
                   </div>
                 </div>
 
                 {/* Job Details - Scrollable content */}
-                <div className="p-8 flex-1 overflow-y-auto">
+                <div className="p-4 sm:p-6 md:p-8 flex-1 overflow-y-auto">
                   {/* Quick Info */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <p className="text-sm text-gray-600 mb-1">Location</p>
-                      <p className="font-medium flex items-center gap-2 text-black">
-                        <MapPin className="h-4 w-4" />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                    <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                      <p className="text-xs sm:text-sm text-gray-600 mb-1">Location</p>
+                      <p className="font-medium flex flex-wrap items-center gap-1 sm:gap-2 text-black text-sm sm:text-base">
+                        <MapPin className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                         {selectedJob.location}
                         {selectedJob.remote && (
-                          <span className="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 text-center rounded-full">
+                          <span className="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">
                             Remote Available
                           </span>
                         )}
                       </p>
                     </div>
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <p className="text-sm text-gray-600 mb-1">Salary Range</p>
-                      <p className="font-medium text-black">{selectedJob.salary}</p>
+                    <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                      <p className="text-xs sm:text-sm text-gray-600 mb-1">Salary Range</p>
+                      <p className="font-medium text-black text-sm sm:text-base">{selectedJob.salary}</p>
                     </div>
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <p className="text-sm text-gray-600 mb-1">Experience Required</p>
-                      <p className="font-medium text-black">{selectedJob.experience}</p>
+                    <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+                      <p className="text-xs sm:text-sm text-gray-600 mb-1">Experience Required</p>
+                      <p className="font-medium text-black text-sm sm:text-base">{selectedJob.experience}</p>
                     </div>
                   </div>
 
                   {/* Job Description */}
-                  <div className="mb-8">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Job Description</h3>
+                  <div className="mb-6 sm:mb-8">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Job Description</h3>
                     <div className="prose max-w-none">
-                      <p className="text-gray-700 leading-relaxed">
+                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                         {selectedJob.description}
                       </p>
                     </div>
                   </div>
 
                   {/* Requirements */}
-                  <div className="mb-8">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">Requirements</h3>
-                    <div className="flex flex-wrap gap-3">
+                  <div className="mb-6 sm:mb-8">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Requirements</h3>
+                    <div className="flex flex-wrap gap-2 sm:gap-3">
                       {selectedJob.requirements.map((req, index) => (
                         <span
                           key={index}
-                          className="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full font-medium"
+                          className="px-3 py-1.5 sm:px-4 sm:py-2 bg-yellow-100 text-yellow-800 rounded-full font-medium text-xs sm:text-sm"
                         >
                           {req}
                         </span>
@@ -393,14 +384,14 @@ export default function JobBoard() {
                   </div>
 
                   {/* Job Details */}
-                  <div className="space-y-6">
+                  <div className="space-y-4 sm:space-y-6">
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Job Type</h4>
-                      <p className="text-gray-700">{selectedJob.type}</p>
+                      <h4 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-base sm:text-lg">Job Type</h4>
+                      <p className="text-gray-700 text-sm sm:text-base">{selectedJob.type}</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Posted Date</h4>
-                      <p className="text-gray-700">
+                      <h4 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-base sm:text-lg">Posted Date</h4>
+                      <p className="text-gray-700 text-sm sm:text-base">
                         {new Date(selectedJob.postedDate).toLocaleDateString('en-US', {
                           weekday: 'long',
                           year: 'numeric',
@@ -412,22 +403,22 @@ export default function JobBoard() {
                   </div>
 
                   {/* CTA Button */}
-                  <div className="mt-12 pt-8 border-t border-gray-200">
-                    <button className="w-full bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] hover:from-[#f8b009] hover:via-[#fbc205] hover:to-[#fdce01] text-gray-900 font-semibold py-4 px-6 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg border border-yellow-300">
+                  <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
+                    <button className="w-full bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] hover:from-[#f8b009] hover:via-[#fbc205] hover:to-[#fdce01] text-gray-900 font-semibold py-3 sm:py-4 px-6 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg border border-yellow-300 text-sm sm:text-base">
                       Apply for This Position
                     </button>
                   </div>
                 </div>
               </div>
             ) : (
-              <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-12 text-center h-full flex flex-col justify-center">
-                <div className="text-gray-400 mb-6">
-                  <Briefcase className="h-16 w-16 mx-auto" />
+              <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 sm:p-8 md:p-12 text-center h-full flex flex-col justify-center">
+                <div className="text-gray-400 mb-4 sm:mb-6">
+                  <Briefcase className="h-12 w-12 sm:h-16 sm:w-16 mx-auto" />
                 </div>
-                <h3 className="text-xl font-medium text-gray-900 mb-3">
+                <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-2 sm:mb-3">
                   Select a job to view details
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-sm sm:text-base">
                   Click on any job listing from the left panel to see detailed information,
                   requirements, and application instructions.
                 </p>

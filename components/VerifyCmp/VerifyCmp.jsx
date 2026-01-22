@@ -41,11 +41,11 @@ export default function VerifyCmp() {
         // Create a temporary anchor element
         const link = document.createElement("a");
         link.href = student.certificate;
-        
+
         // Extract filename from the certificate path or use student name
         const fileName = `certificate-${student.name.replace(/\s+/g, '-').toLowerCase()}.png`;
         link.download = fileName;
-        
+
         // Append to body, click, and remove
         document.body.appendChild(link);
         link.click();
@@ -53,39 +53,44 @@ export default function VerifyCmp() {
     };
 
     return (
-        <section className=" px-[5vw] py-24 bg-white text-gray-900">
+        <section className="edn__lr__space py-20 bg-white text-gray-900">
 
             {/* Search */}
-            <div className="max-w-6xl mx-auto">
-                <div className="relative flex items-center gap-6 px-10 py-6 bg-white rounded-2xl">
+            <div className="max-w-6xl mx-auto ">
+                <div className="relative bg-white rounded-2xl">
 
                     {/* Gradient stroke */}
                     <span className="absolute inset-0 p-[1px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
                         <span className="block h-full w-full bg-white rounded-2xl" />
                     </span>
 
-                    <div className="relative z-10 flex items-center gap-6 w-full">
-                        <Search className="text-gray-400" size={20} />
+                    <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 px-4 sm:px-10 py-4 sm:py-6">
 
-                        <input
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                            placeholder="Enter credential ID"
-                            className="flex-1 bg-transparent outline-none text-lg tracking-wide"
-                        />
+                        {/* Input Row */}
+                        <div className="flex items-center gap-4 w-full">
+                            <Search className="text-gray-400 shrink-0" size={20} />
 
+                            <input
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                placeholder="Enter credential ID"
+                                className="flex-1 bg-transparent outline-none text-base sm:text-lg tracking-wide"
+                            />
+                        </div>
+
+                        {/* Button */}
                         <button
                             onClick={verify}
-                            className="relative overflow-hidden px-8 py-3 text-sm tracking-widest uppercase font-medium border border-transparent rounded-full"
+                            className="relative overflow-hidden w-full sm:w-auto px-6 sm:px-8 py-3 text-sm tracking-widest uppercase font-medium border border-transparent rounded-full shrink-0"
                         >
-                            <span className="absolute inset-0 bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] transition" />
-                            <span className="relative text-black hover:text-black">
-                                Verify
-                            </span>
+                            <span className="absolute inset-0 bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01]" />
+                            <span className="relative text-black">Verify</span>
                         </button>
+
                     </div>
                 </div>
             </div>
+
 
 
             {student && (
@@ -93,7 +98,7 @@ export default function VerifyCmp() {
 
                     {/* Identity Sheet */}
                     <div className="relative p-[2px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                        <div className="bg-white px-16 py-14 rounded-2xl">
+                        <div className="bg-white px-6 xl:px-16 py-7 xl:py-14 rounded-2xl">
 
                             {/* Header */}
                             <div className="flex justify-between items-end">
@@ -142,9 +147,9 @@ export default function VerifyCmp() {
                                             value: student.issued,
                                         }].map((item) => (
                                             <div key={item.label} className="relative p-[1px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                                                <div className="flex items-center gap-6 px-6 py-4 bg-white rounded-2xl">
+                                                <div className="flex items-center gap-2  md:gap-6 px-2 md:px-6 py-2 md:py-4 bg-white rounded-2xl">
                                                     <div className="text-xl text-gray-500">{item.icon}</div>
-                                                    <div className="flex justify-between w-full">
+                                                    <div className="flex justify-between items-center w-full">
                                                         <span className="text-gray-400 tracking-wide">{item.label}</span>
                                                         <span className="font-medium">{item.value}</span>
                                                     </div>
@@ -156,7 +161,7 @@ export default function VerifyCmp() {
 
                                 {/* Identity Image */}
                                 <div className="relative p-[2px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                                    <div className="relative aspect-[4/4] bg-white rounded-2xl overflow-hidden">
+                                    <div className="relative aspect-[4/4] lg:aspect-[4/5] xl:aspect-[4/4] bg-white rounded-2xl overflow-hidden">
                                         <Image
                                             src={student.image}
                                             alt={student.name}
@@ -176,10 +181,10 @@ export default function VerifyCmp() {
                         <p className="text-lg font-semibold text-gray-700">
                             Official Certificate of Completion
                         </p>
-                        
+
                         <button
                             onClick={handleDownloadCertificate}
-                            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] text-black rounded-full font-medium hover:opacity-90 transition-opacity"
+                            className="flex items-center md:gap-2 px-3 md:px-6 py-1.5 md:py-3 text-sm md:text-lg bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] text-black rounded-full font-medium hover:opacity-90 transition-opacity"
                         >
                             <Download size={18} />
                             Download Certificate
