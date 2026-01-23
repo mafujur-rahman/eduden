@@ -3,132 +3,83 @@
 import { useState, useMemo, useEffect } from "react";
 import { Search, Building2, MapPin, Briefcase, Filter } from "lucide-react";
 
-// Job listings data structure
-const jobListings = [
-  {
-    id: 1,
-    title: "Senior Full Stack Developer",
-    company: "TechInnovate Solutions",
-    location: "San Francisco, CA",
-    type: "Full-time",
-    salary: "$140,000 - $180,000",
-    experience: "5+ years",
-    description: "We're looking for a senior full-stack developer to lead our platform development team. You'll work with modern technologies including React, Node.js, and cloud infrastructure.",
-    requirements: ["React/Next.js", "Node.js", "TypeScript", "AWS/Azure", "MongoDB/PostgreSQL"],
-    postedDate: "2024-01-15",
-    remote: true,
-    logo: "/company-logos/techinnovate.png"
-  },
-  {
-    id: 2,
-    title: "UX/UI Designer",
-    company: "CreativeMind Studios",
-    location: "Remote",
-    type: "Contract",
-    salary: "$90,000 - $120,000",
-    experience: "3+ years",
-    description: "Join our design team to create beautiful, intuitive user interfaces for enterprise applications. Strong portfolio required.",
-    requirements: ["Figma", "Adobe Creative Suite", "User Research", "Prototyping", "Design Systems"],
-    postedDate: "2024-01-14",
-    remote: true,
-    logo: "/company-logos/creativemind.png"
-  },
-  {
-    id: 3,
-    title: "DevOps Engineer",
-    company: "CloudScale Inc",
-    location: "New York, NY",
-    type: "Full-time",
-    salary: "$130,000 - $160,000",
-    experience: "4+ years",
-    description: "Manage and scale our cloud infrastructure across multiple platforms. Implement CI/CD pipelines and ensure system reliability.",
-    requirements: ["Docker/Kubernetes", "AWS/GCP", "Terraform", "Linux", "Python/Bash"],
-    postedDate: "2024-01-13",
-    remote: false,
-    logo: "/company-logos/cloudscale.png"
-  },
-  {
-    id: 4,
-    title: "Data Scientist",
-    company: "DataInsight Analytics",
-    location: "Boston, MA",
-    type: "Full-time",
-    salary: "$120,000 - $150,000",
-    experience: "3+ years",
-    description: "Work with large datasets to derive insights and build predictive models. Collaborate with product and engineering teams.",
-    requirements: ["Python/R", "Machine Learning", "SQL", "Statistics", "TensorFlow/PyTorch"],
-    postedDate: "2024-01-12",
-    remote: true,
-    logo: "/company-logos/datainsight.png"
-  },
-  {
-    id: 5,
-    title: "Frontend Developer",
-    company: "WebFlow Technologies",
-    location: "Austin, TX",
-    type: "Full-time",
-    salary: "$110,000 - $140,000",
-    experience: "2+ years",
-    description: "Build responsive, accessible web applications using modern frontend technologies. Focus on performance and user experience.",
-    requirements: ["React", "TypeScript", "CSS/SCSS", "Next.js", "Testing"],
-    postedDate: "2024-01-11",
-    remote: true,
-    logo: "/company-logos/webflow.png"
-  },
-  {
-    id: 6,
-    title: "Backend Engineer",
-    company: "ServerStack Solutions",
-    location: "Seattle, WA",
-    type: "Full-time",
-    salary: "$125,000 - $155,000",
-    experience: "4+ years",
-    description: "Design and implement scalable backend systems and APIs. Work with microservices architecture and cloud platforms.",
-    requirements: ["Java/Spring", "Python/Django", "REST APIs", "Microservices", "Database Design"],
-    postedDate: "2024-01-10",
-    remote: false,
-    logo: "/company-logos/serverstack.png"
-  },
-  {
-    id: 7,
-    title: "Product Manager",
-    company: "ProductVision Corp",
-    location: "Remote",
-    type: "Full-time",
-    salary: "$135,000 - $170,000",
-    experience: "5+ years",
-    description: "Lead product strategy and roadmap. Work with cross-functional teams to deliver customer-focused solutions.",
-    requirements: ["Product Strategy", "Agile/Scrum", "Market Research", "Data Analysis", "Stakeholder Management"],
-    postedDate: "2024-01-09",
-    remote: true,
-    logo: "/company-logos/productvision.png"
-  },
-  {
-    id: 8,
-    title: "QA Automation Engineer",
-    company: "QualityFirst Testing",
-    location: "Chicago, IL",
-    type: "Contract",
-    salary: "$95,000 - $115,000",
-    experience: "3+ years",
-    description: "Develop and maintain automated test frameworks. Ensure product quality across web and mobile platforms.",
-    requirements: ["Selenium/Cypress", "Java/Python", "Test Automation", "CI/CD", "API Testing"],
-    postedDate: "2024-01-08",
-    remote: true,
-    logo: "/company-logos/qualityfirst.png"
-  },
-];
-
 export default function PlacementCmp() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedType, setSelectedType] = useState("All");
   const [selectedExperience, setSelectedExperience] = useState("All");
   const [remoteOnly, setRemoteOnly] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Filter jobs based on search criteria
+  // Fetch jobs from API
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  const fetchJobs = async () => {
+    try {
+      const token = localStorage.getItem('authToken');
+
+      if (!token) {
+        console.error("No authentication token found");
+        setLoading(false);
+        return;
+      }
+
+      // Build query parameters
+      const params = new URLSearchParams();
+      if (selectedType !== "All") params.append("job_type", selectedType);
+      if (remoteOnly) params.append("remote_available", "yes");
+      if (searchQuery) params.append("search", searchQuery);
+
+      const url = `https://lmsapi.eduden.io/api/placements/${params.toString() ? `?${params.toString()}` : ''}`;
+
+      const response = await fetch(url, {
+        headers: {
+          'Authorization': `Token ${token}`,
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.success && data.data) {
+        const transformedJobs = data.data.map(job => ({
+          id: job.id,
+          title: job.title,
+          company: job.company_name,
+          location: job.location,
+          type: job.job_type,
+          salary: job.salary,
+          experience: job.experience,
+          description: job.description,
+          requirements: job.requirements ? job.requirements.split("\r\n").filter(r => r.trim()) : [],
+          postedDate: job.posted_date,
+          remote: job.remote_available === "Yes",
+          deadline: job.deadline,
+          sourceUrl: job.source_url
+        }));
+
+        setJobs(transformedJobs);
+        if (transformedJobs.length > 0 && !selectedJob) {
+          setSelectedJob(transformedJobs[0]);
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Filter jobs based on search criteria 
   const filteredJobs = useMemo(() => {
-    return jobListings.filter(job => {
+    return jobs.filter(job => {
       const matchesSearch = searchQuery === "" ||
         job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         job.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -140,37 +91,92 @@ export default function PlacementCmp() {
       // Experience level matching logic
       let matchesExperience = true;
       if (selectedExperience !== "All") {
-        const expYears = parseInt(job.experience);
-        switch (selectedExperience) {
-          case "Entry":
-            matchesExperience = expYears <= 2;
-            break;
-          case "Mid":
-            matchesExperience = expYears >= 2 && expYears <= 4;
-            break;
-          case "Senior":
-            matchesExperience = expYears >= 5;
-            break;
-          default:
-            matchesExperience = true;
+        // Extract years from experience string (e.g., "3+ years" -> 3)
+        const expMatch = job.experience.match(/(\d+)\+/);
+        if (expMatch) {
+          const expYears = parseInt(expMatch[1]);
+          switch (selectedExperience) {
+            case "Entry":
+              matchesExperience = expYears <= 2;
+              break;
+            case "Mid":
+              matchesExperience = expYears >= 2 && expYears <= 4;
+              break;
+            case "Senior":
+              matchesExperience = expYears >= 5;
+              break;
+            default:
+              matchesExperience = true;
+          }
         }
       }
 
       return matchesSearch && matchesType && matchesRemote && matchesExperience;
     });
-  }, [searchQuery, selectedType, selectedExperience, remoteOnly]);
+  }, [jobs, searchQuery, selectedType, selectedExperience, remoteOnly]);
 
-  // Select first job by default
-  useEffect(() => {
-    if (filteredJobs.length > 0 && !selectedJob) {
-      setSelectedJob(filteredJobs[0]);
+  // Handle apply button click
+  const handleApply = () => {
+    if (selectedJob?.sourceUrl) {
+      window.open(selectedJob.sourceUrl, '_blank');
     }
-  }, [filteredJobs, selectedJob]);
+  };
+
+  // Handle logout
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    window.location.reload();
+  };
+
+  // Refresh jobs
+  const refreshJobs = () => {
+    setLoading(true);
+    fetchJobs();
+  };
+
+  if (loading) {
+    return (
+      <section className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-8 sm:py-12 md:py-16 lg:py-20">
+        <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto max-w-[1920px]">
+          <div className="flex items-center justify-center min-h-[60vh]">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500 mx-auto"></div>
+              <p className="mt-4 text-gray-600">Loading job opportunities...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-8 sm:py-12 md:py-16 lg:py-20">
       <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto max-w-[1920px]">
-        
+
+        {/* Header with actions */}
+        <div className="mb-6 sm:mb-8">
+          <div className="flex justify-between items-center mb-4">
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Career Opportunities</h1>
+              <p className="text-gray-600 text-sm sm:text-base">Discover your next career move</p>
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={refreshJobs}
+                className="px-3 sm:px-4 py-2 text-xs sm:text-sm bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 border border-blue-200"
+              >
+                Refresh
+              </button>
+              <button
+                onClick={handleLogout}
+                className="px-3 sm:px-4 py-2 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 border border-gray-300"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* Search and Filter Bar */}
         <div className="mb-6 sm:mb-8 space-y-4">
@@ -184,6 +190,7 @@ export default function PlacementCmp() {
                   className="w-full pl-9 sm:pl-10 pr-4 py-2.5 sm:py-3 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent text-sm sm:text-base"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && refreshJobs()}
                 />
               </div>
             </div>
@@ -215,8 +222,8 @@ export default function PlacementCmp() {
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <button
               className={`px-3 sm:px-4 py-2 rounded-lg flex items-center gap-2 text-sm sm:text-base ${remoteOnly
-                  ? "bg-yellow-100 text-yellow-700 border border-yellow-300"
-                  : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
+                ? "bg-yellow-100 text-yellow-700 border border-yellow-300"
+                : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-50"
                 }`}
               onClick={() => setRemoteOnly(!remoteOnly)}
             >
@@ -238,8 +245,8 @@ export default function PlacementCmp() {
                 <div
                   key={job.id}
                   className={`p-4 sm:p-5 md:p-6 rounded-xl border cursor-pointer transition-all duration-200 hover:shadow-lg ${selectedJob?.id === job.id
-                      ? "border-yellow-500 bg-yellow-50 shadow-md"
-                      : "border-gray-200 bg-white hover:border-gray-300"
+                    ? "border-yellow-500 bg-yellow-50 shadow-md"
+                    : "border-gray-200 bg-white hover:border-gray-300"
                     }`}
                   onClick={() => setSelectedJob(job)}
                 >
@@ -257,8 +264,8 @@ export default function PlacementCmp() {
                           <p className="text-gray-700 font-medium text-sm sm:text-base truncate">{job.company}</p>
                         </div>
                         <span className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium self-start ${job.type === "Full-time"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-purple-100 text-purple-800"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-purple-100 text-purple-800"
                           }`}>
                           {job.type}
                         </span>
@@ -326,8 +333,12 @@ export default function PlacementCmp() {
                       <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2 truncate">{selectedJob.title}</h2>
                       <p className="text-lg sm:text-xl font-medium truncate">{selectedJob.company}</p>
                     </div>
-                    <button className="bg-white text-gray-900 hover:bg-gray-100 px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-colors border border-gray-300 shadow-sm text-sm sm:text-base w-full sm:w-auto">
-                      Apply Now
+                    <button
+                      onClick={handleApply}
+                      className="bg-white text-gray-900 hover:bg-gray-100 px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-colors border border-gray-300 shadow-sm text-sm sm:text-base w-full sm:w-auto"
+                      disabled={!selectedJob.sourceUrl}
+                    >
+                      {selectedJob.sourceUrl ? "Apply Now" : "Apply Details"}
                     </button>
                   </div>
                 </div>
@@ -362,7 +373,7 @@ export default function PlacementCmp() {
                   <div className="mb-6 sm:mb-8">
                     <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Job Description</h3>
                     <div className="prose max-w-none">
-                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                      <p className="text-gray-700 leading-relaxed text-sm sm:text-base whitespace-pre-line">
                         {selectedJob.description}
                       </p>
                     </div>
@@ -400,12 +411,28 @@ export default function PlacementCmp() {
                         })}
                       </p>
                     </div>
+                    {selectedJob.deadline && (
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-base sm:text-lg">Application Deadline</h4>
+                        <p className="text-gray-700 text-sm sm:text-base">
+                          {new Date(selectedJob.deadline).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                          })}
+                        </p>
+                      </div>
+                    )}
                   </div>
 
                   {/* CTA Button */}
                   <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-200">
-                    <button className="w-full bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] hover:from-[#f8b009] hover:via-[#fbc205] hover:to-[#fdce01] text-gray-900 font-semibold py-3 sm:py-4 px-6 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg border border-yellow-300 text-sm sm:text-base">
-                      Apply for This Position
+                    <button
+                      onClick={handleApply}
+                      className="w-full bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] hover:from-[#f8b009] hover:via-[#fbc205] hover:to-[#fdce01] text-gray-900 font-semibold py-3 sm:py-4 px-6 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg border border-yellow-300 text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={!selectedJob.sourceUrl}
+                    >
+                      {selectedJob.sourceUrl ? "Apply for This Position" : "Application Details"}
                     </button>
                   </div>
                 </div>
