@@ -154,30 +154,6 @@ export default function PlacementCmp() {
     <section className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-8 sm:py-12 md:py-16 lg:py-20">
       <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto max-w-[1920px]">
 
-        {/* Header with actions */}
-        <div className="mb-6 sm:mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Career Opportunities</h1>
-              <p className="text-gray-600 text-sm sm:text-base">Discover your next career move</p>
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={refreshJobs}
-                className="px-3 sm:px-4 py-2 text-xs sm:text-sm bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 border border-blue-200"
-              >
-                Refresh
-              </button>
-              <button
-                onClick={handleLogout}
-                className="px-3 sm:px-4 py-2 text-xs sm:text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 border border-gray-300"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
-
         {/* Search and Filter Bar */}
         <div className="mb-6 sm:mb-8 space-y-4">
           <div className="flex flex-col md:flex-row gap-3 sm:gap-4">
