@@ -33,14 +33,13 @@ const LoginModal = ({ onLogin, onClose }) => {
         throw new Error("Login failed. Please try again.");
       }
 
-
       const loginData = await response.json();
 
-      // Check token e
+      // Check token exists
       if (loginData.token) {
-        // Store token
+        // Store token and user data
         localStorage.setItem("authToken", loginData.token);
-        localStorage.setItem("token", JSON.stringify({
+        localStorage.setItem("user", JSON.stringify({
           id: loginData.id,
           username: loginData.username,
           email: loginData.email,
@@ -58,93 +57,88 @@ const LoginModal = ({ onLogin, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 animate-fadeIn">
-      <div className="bg-white rounded-2xl p-8 max-w-md w-full relative animate-scaleIn shadow-2xl">
+    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 animate-fadeIn">
+      <div className="bg-[#111] rounded-2xl p-8 max-w-md w-full relative animate-scaleIn shadow-2xl border border-white/10">
+
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-2 hover:bg-gray-100 rounded-full"
+          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
         >
           <FiX size={24} />
         </button>
 
-        {/* Login Header */}
+        {/* Header */}
         <div className="text-center mb-8">
           <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] flex items-center justify-center">
-            <FiUser size={32} className="text-white" />
+            <FiUser size={32} className="text-black" />
           </div>
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">Welcome Back</h2>
-          <p className="text-gray-600">Sign in to access career opportunities</p>
+          <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
+          <p className="text-gray-400">Sign in to access career opportunities</p>
         </div>
 
-        {/* Login Form */}
+        {/* Form */}
         <form onSubmit={handleLogin} className="space-y-6">
+
+          {/* Username */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-300 mb-2">
               Username
             </label>
             <div className="relative">
-              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                 <FiUser size={20} />
               </div>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 text-black focus:outline-none rounded-xl focus:border-[#fab80A] focus:ring-2 focus:ring-[#fab80A]/20 transition-all outline-none"
+                className="w-full pl-12 pr-4 py-3 rounded-xl bg-black border border-white/15 text-white placeholder-gray-500 focus:border-[#fab80A] focus:ring-2 focus:ring-[#fab80A]/20 outline-none transition-all"
                 placeholder="Enter your username"
                 required
               />
             </div>
           </div>
 
+          {/* Password */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-300 mb-2">
               Password
             </label>
             <div className="relative">
-              <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+              <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                 <FiLock size={20} />
               </div>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 text-black focus:outline-none rounded-xl focus:border-[#fab80A] focus:ring-2 focus:ring-[#fab80A]/20 transition-all outline-none"
+                className="w-full pl-12 pr-4 py-3 rounded-xl bg-black border border-white/15 text-white placeholder-gray-500 focus:border-[#fab80A] focus:ring-2 focus:ring-[#fab80A]/20 outline-none transition-all"
                 placeholder="Enter your password"
                 required
               />
             </div>
           </div>
 
-          {/* Error Message */}
+          {/* Error */}
           {error && (
-            <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-sm">
+            <div className="p-3 bg-red-900/20 border border-red-500/30 text-red-400 rounded-lg text-sm">
               {error}
             </div>
           )}
 
-          {/* Login Button */}
+          {/* Submit */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 px-4 bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] text-black font-bold rounded-xl hover:shadow-lg hover:shadow-[#fab80A]/30 transition-all duration-300 transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            className="w-full py-4 bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] text-black font-bold rounded-xl  "
           >
-            {loading ? (
-              <span className="flex items-center justify-center">
-                <svg className="animate-spin h-5 w-5 mr-3 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Authenticating...
-              </span>
-            ) : (
-              "Login to Continue"
-            )}
+            {loading ? "Authenticating..." : "Login to Continue"}
           </button>
         </form>
       </div>
     </div>
+
   );
 };
 
@@ -169,6 +163,17 @@ const Page = () => {
     };
 
     checkAuth();
+
+    // Listen for storage changes (in case user logs out from another tab)
+    const handleStorageChange = () => {
+      checkAuth();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
   }, []);
 
   const handleLoginSuccess = () => {

@@ -6,12 +6,18 @@ import { Search, Download } from "lucide-react";
 import { HiOutlineAcademicCap } from "react-icons/hi2";
 import { MdWorkOutline, MdOutlineDateRange } from "react-icons/md";
 import gsap from "gsap";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { useRef } from "react";
+import CertificateCanvas from "../Certificate/CertificateCanvas";
+import ResponsiveCertificate from "../Certificate/ResponsiveCertificate";
 
 export default function VerifyCmp() {
     const [query, setQuery] = useState("");
     const [student, setStudent] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const certificateRef = useRef(null);
 
     const verify = async () => {
         if (!query.trim()) {
@@ -25,7 +31,7 @@ export default function VerifyCmp() {
 
         try {
             let requestBody = {};
-            
+
             if (query.startsWith("CNO")) {
                 requestBody = { credential_id: query.trim() };
             } else if (query.startsWith("EDU-STU")) {
@@ -82,43 +88,45 @@ export default function VerifyCmp() {
         }
     };
 
-    const handleDownloadCertificate = () => {
-        if (!student?.certificate) return;
+    const handleDownloadCertificate = async () => {
+        if (!certificateRef.current) return;
 
-        // Create a temporary anchor element
-        const link = document.createElement("a");
-        link.href = student.certificate;
+        const canvas = await html2canvas(certificateRef.current, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff",
+        });
 
-        // Extract filename from the certificate path or use student name
-        const fileName = `certificate-${student.name.replace(/\s+/g, '-').toLowerCase()}.png`;
-        link.download = fileName;
+        const imgData = canvas.toDataURL("image/png");
 
-        // Append to body, click, and remove
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const pdf = new jsPDF("landscape", "px", [1400, 900]);
+        pdf.addImage(imgData, "PNG", 0, 0, 1400, 900);
+
+        pdf.save(
+            `certificate-${student.name.replace(/\s+/g, "-").toLowerCase()}.pdf`
+        );
     };
 
     return (
-        <section className="edn__lr__space py-20 bg-white text-gray-900">
+        <section className="edn__lr__space py-20 text-white">
             {/* Search */}
             <div className="max-w-6xl mx-auto">
-                <div className="relative bg-white rounded-2xl">
+                <div className="relative rounded-2xl">
                     {/* Gradient stroke */}
                     <span className="absolute inset-0 p-[1px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                        <span className="block h-full w-full bg-white rounded-2xl" />
+                        <span className="block h-full w-full bg-black rounded-2xl" /> 
                     </span>
 
                     <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 px-4 sm:px-10 py-4 sm:py-6">
                         {/* Input Row */}
                         <div className="flex items-center gap-4 w-full">
-                            <Search className="text-gray-400 shrink-0" size={20} />
+                            <Search className="text-gray-300 shrink-0" size={20} />
                             <input
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
                                 onKeyPress={handleKeyPress}
                                 placeholder="Enter credential ID or student batch ID"
-                                className="flex-1 bg-transparent outline-none text-base sm:text-lg tracking-wide"
+                                className="flex-1 bg-transparent outline-none text-base sm:text-lg tracking-wide text-white placeholder-gray-400"
                             />
                         </div>
 
@@ -138,8 +146,8 @@ export default function VerifyCmp() {
 
                 {/* Error Message */}
                 {error && (
-                    <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-                        <p className="text-red-600 text-center">{error}</p>
+                    <div className="mt-4 p-4 bg-red-900/20 border border-red-700 rounded-lg">
+                        <p className="text-red-300 text-center">{error}</p>
                     </div>
                 )}
 
@@ -149,35 +157,30 @@ export default function VerifyCmp() {
                         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#fcc405]"></div>
                     </div>
                 )}
-
-                {/* Info Message */}
-                {/* <p className="mt-4 text-sm text-gray-500 text-center">
-                    You can search by Credential ID (starts with CNO) or Student Batch ID (starts with EDU-STU)
-                </p> */}
             </div>
 
             {student && (
                 <div className="verify-sheet max-w-6xl mx-auto mt-28">
                     {/* Identity Sheet */}
                     <div className="relative p-[2px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                        <div className="bg-white px-6 xl:px-16 py-7 xl:py-14 rounded-2xl">
+                        <div className="px-6 xl:px-16 py-7 xl:py-14 rounded-2xl bg-black">
                             {/* Header */}
                             <div className="flex justify-between items-end">
                                 <div>
-                                    <h2 className="text-4xl font-medium tracking-tight">
+                                    <h2 className="text-4xl font-medium tracking-tight text-white">
                                         {student.name}
                                     </h2>
-                                    <p className="mt-2 text-sm tracking-widest text-gray-500 uppercase">
+                                    <p className="mt-2 text-sm tracking-widest text-gray-300 uppercase">
                                         Credential · {student.id}
                                     </p>
-                                    <p className="mt-1 text-sm text-gray-500">
+                                    <p className="mt-1 text-sm text-gray-400">
                                         Student Batch ID: {student.studentBatchId}
                                     </p>
                                 </div>
 
                                 <div className="flex items-center gap-3">
                                     <span className="w-3 h-3 rounded-full bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01]" />
-                                    <span className="text-sm tracking-widest uppercase">
+                                    <span className="text-sm tracking-widest uppercase text-white">
                                         Verified
                                     </span>
                                 </div>
@@ -190,7 +193,7 @@ export default function VerifyCmp() {
                             <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-24 mt-16">
                                 {/* Description */}
                                 <div>
-                                    <p className="text-xl leading-relaxed max-w-xl">
+                                    <p className="text-xl leading-relaxed max-w-xl text-white">
                                         {student.description}
                                     </p>
 
@@ -198,32 +201,32 @@ export default function VerifyCmp() {
                                     <div className="mt-16 space-y-6">
                                         {[
                                             {
-                                                icon: <HiOutlineAcademicCap />,
+                                                icon: <HiOutlineAcademicCap className="text-gray-300" />,
                                                 label: "Program",
                                                 value: student.program,
                                             },
                                             {
-                                                icon: <HiOutlineAcademicCap />,
+                                                icon: <HiOutlineAcademicCap className="text-gray-300" />,
                                                 label: "Batch",
                                                 value: student.batch,
                                             },
                                             {
-                                                icon: <MdOutlineDateRange />,
+                                                icon: <MdOutlineDateRange className="text-gray-300" />,
                                                 label: "Issued Date",
                                                 value: student.issued,
                                             },
                                             {
-                                                icon: <MdOutlineDateRange />,
+                                                icon: <MdOutlineDateRange className="text-gray-300" />,
                                                 label: "Admission Date",
                                                 value: student.admissionDate,
                                             },
                                         ].map((item) => (
                                             <div key={item.label} className="relative p-[1px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                                                <div className="flex items-center gap-2 md:gap-6 px-2 md:px-6 py-2 md:py-4 bg-white rounded-2xl">
-                                                    <div className="text-xl text-gray-500">{item.icon}</div>
+                                                <div className="flex items-center gap-2 md:gap-6 px-2 md:px-6 py-2 md:py-4 rounded-2xl bg-black">
+                                                    <div className="text-xl">{item.icon}</div>
                                                     <div className="flex justify-between items-center w-full">
                                                         <span className="text-gray-400 tracking-wide">{item.label}</span>
-                                                        <span className="font-medium">{item.value}</span>
+                                                        <span className="font-medium text-white">{item.value}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -233,7 +236,7 @@ export default function VerifyCmp() {
 
                                 {/* Identity Image */}
                                 <div className="relative p-[2px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                                    <div className="relative aspect-[4/4] lg:aspect-[4/5] xl:aspect-[4/4] bg-white rounded-2xl overflow-hidden">
+                                    <div className="relative aspect-[4/4] lg:aspect-[4/5] xl:aspect-[4/4] rounded-2xl overflow-hidden bg-black">
                                         <Image
                                             src={student.image}
                                             alt={student.name}
@@ -246,7 +249,9 @@ export default function VerifyCmp() {
                                         />
                                     </div>
                                     {/* Student Name below image */}
-                                    <p className="my-2 xl:py-4 text-center text-2xl font-bold">{student.name}</p>
+                                    <p className="my-2 xl:py-4 text-center text-2xl font-bold text-black">
+                                        {student.name}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -254,7 +259,7 @@ export default function VerifyCmp() {
 
                     {/* Certificate Header with Download Button */}
                     <div className="mt-20 flex justify-between items-center mb-6">
-                        <p className="text-lg font-semibold text-gray-700">
+                        <p className="text-lg font-semibold text-white">
                             Official Certificate of Completion
                         </p>
 
@@ -267,17 +272,18 @@ export default function VerifyCmp() {
                         </button>
                     </div>
 
-                    {/* Certificate */}
+                    {/* Certificate Preview */}
                     <div className="relative p-[2px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                        <div className="bg-white rounded-2xl p-6 relative">
-                            <Image
-                                src={student.certificate}
-                                alt="Certificate"
-                                width={1400}
-                                height={900}
-                                className="object-cover rounded-2xl"
-                            />
+                        <div className="bg-black rounded-2xl overflow-hidden">
+                            <ResponsiveCertificate>
+                                <CertificateCanvas student={student} />
+                            </ResponsiveCertificate>
                         </div>
+                    </div>
+
+                    {/* Hidden Certificate for PDF */}
+                    <div className="absolute -left-[9999px] -top-[9999px]">
+                        <CertificateCanvas ref={certificateRef} student={student} />
                     </div>
                 </div>
             )}
