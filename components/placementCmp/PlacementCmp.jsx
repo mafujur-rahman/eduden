@@ -275,7 +275,7 @@ export default function PlacementCmp() {
         <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 md:gap-8">
           {/* Job List */}
           <div className="lg:w-2/5">
-            <div className="space-y-3 sm:space-y-4 max-h-[600px] sm:max-h-[700px] md:max-h-[800px] overflow-y-auto pr-1 sm:pr-2">
+            <div className="space-y-3 sm:space-y-4 max-h-[600px] sm:max-h-[700px] md:max-h-[800px] xl:max-h-[1200px] overflow-y-auto pr-1 sm:pr-2">
               {filteredJobs.map((job) => (
                 <div
                   key={job.id}
@@ -293,15 +293,12 @@ export default function PlacementCmp() {
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
                         <div className="flex-1 min-w-0">
-                          <h3 className="font-semibold text-white text-base sm:text-lg truncate">
+                          <h3 className="font-semibold text-[#ffd300]  text-base sm:text-lg truncate">
                             {job.title}
                           </h3>
-                          <p className="text-[#ffd300] font-medium text-sm sm:text-base truncate">{job.company}</p>
+                          <p className="text-white font-medium text-sm sm:text-base truncate">{job.company}</p>
                         </div>
-                        <span className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium self-start border border-[#ffd300] ${job.type === "Full-time"
-                          ? "text-green-400"
-                          : "text-purple-400"
-                          }`}>
+                        <span className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium self-start border border-[#ffd300] text-[#ffd300]`}>
                           {job.type}
                         </span>
                       </div>
@@ -330,7 +327,7 @@ export default function PlacementCmp() {
                       </div>
 
                       <div className="mt-3 sm:mt-4">
-                        <p className="text-sm font-medium text-[#ffd300]">
+                        <p className="text-sm font-medium text-white">
                           {job.salary}
                         </p>
                         <p className="text-xs sm:text-sm text-gray-500">
@@ -413,184 +410,6 @@ export default function PlacementCmp() {
                         className="job-description-content"
                         dangerouslySetInnerHTML={createMarkup(selectedJob.description)}
                       />
-                      <style jsx global>{`
-                        .job-description-content {
-                          color: #d1d5db;
-                          font-family: inherit;
-                          line-height: 1.6;
-                        }
-                        
-                        /* Remove all backgrounds */
-                        .job-description-content * {
-                          background-color: transparent !important;
-                          background: none !important;
-                        }
-                        
-                        /* Paragraph styling */
-                        .job-description-content p {
-                          margin-bottom: 1rem;
-                          color: #d1d5db;
-                        }
-                        
-                        /* Headings */
-                        .job-description-content h1,
-                        .job-description-content h2,
-                        .job-description-content h3,
-                        .job-description-content h4,
-                        .job-description-content h5,
-                        .job-description-content h6 {
-                          color: #ffd300;
-                          margin-top: 1.5rem;
-                          margin-bottom: 1rem;
-                          font-weight: 600;
-                        }
-                        
-                        .job-description-content h1 { font-size: 1.5rem; }
-                        .job-description-content h2 { font-size: 1.375rem; }
-                        .job-description-content h3 { font-size: 1.25rem; }
-                        .job-description-content h4 { font-size: 1.125rem; }
-                        .job-description-content h5 { font-size: 1rem; }
-                        .job-description-content h6 { font-size: 0.875rem; }
-                        
-                        /* Lists */
-                        .job-description-content ul,
-                        .job-description-content ol {
-                          margin-left: 1.5rem;
-                          margin-bottom: 1rem;
-                          color: #d1d5db;
-                        }
-                        
-                        .job-description-content li {
-                          margin-bottom: 0.5rem;
-                        }
-                        
-                        .job-description-content ul {
-                          list-style-type: disc;
-                        }
-                        
-                        .job-description-content ol {
-                          list-style-type: decimal;
-                        }
-                        
-                        /* Text formatting */
-                        .job-description-content strong,
-                        .job-description-content b {
-                          color: #ffffff;
-                          font-weight: 600;
-                        }
-                        
-                        .job-description-content em,
-                        .job-description-content i {
-                          font-style: italic;
-                          color: #d1d5db;
-                        }
-                        
-                        .job-description-content u {
-                          text-decoration: underline;
-                          color: #d1d5db;
-                        }
-                        
-                        .job-description-content s,
-                        .job-description-content strike {
-                          text-decoration: line-through;
-                          color: #9ca3af;
-                        }
-                        
-                        /* Links */
-                        .job-description-content a {
-                          color: #ffd300;
-                          text-decoration: underline;
-                        }
-                        
-                        .job-description-content a:hover {
-                          color: #fab80A;
-                        }
-                        
-                        /* Code and pre blocks */
-                        .job-description-content code {
-                          background: rgba(255, 211, 0, 0.1) !important;
-                          padding: 0.2rem 0.4rem;
-                          border-radius: 0.25rem;
-                          font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-                          color: #ffd300;
-                          font-size: 0.875rem;
-                        }
-                        
-                        .job-description-content pre {
-                          background: #1a1a1a !important;
-                          padding: 1rem;
-                          border-radius: 0.5rem;
-                          overflow-x: auto;
-                          margin-bottom: 1rem;
-                          border: 1px solid #333;
-                        }
-                        
-                        .job-description-content pre code {
-                          background: transparent !important;
-                          padding: 0;
-                        }
-                        
-                        /* Blockquotes */
-                        .job-description-content blockquote {
-                          border-left: 3px solid #ffd300;
-                          padding-left: 1rem;
-                          margin-left: 0;
-                          color: #9ca3af;
-                          font-style: italic;
-                          margin-bottom: 1rem;
-                        }
-                        
-                        /* Tables */
-                        .job-description-content table {
-                          width: 100%;
-                          border-collapse: collapse;
-                          margin-bottom: 1rem;
-                          border: 1px solid #333;
-                        }
-                        
-                        .job-description-content th {
-                          background: rgba(255, 211, 0, 0.2) !important;
-                          color: #ffd300;
-                          padding: 0.75rem;
-                          text-align: left;
-                          border: 1px solid #333;
-                          font-weight: 600;
-                        }
-                        
-                        .job-description-content td {
-                          padding: 0.75rem;
-                          border: 1px solid #333;
-                          color: #d1d5db;
-                        }
-                        
-                        .job-description-content tr:nth-child(even) {
-                          background: rgba(255, 255, 255, 0.03) !important;
-                        }
-                        
-                        /* Div and span reset */
-                        .job-description-content div,
-                        .job-description-content span {
-                          color: inherit;
-                          background: transparent !important;
-                          display: inline;
-                        }
-                        
-                        /* Horizontal rule */
-                        .job-description-content hr {
-                          border: none;
-                          border-top: 1px solid #333;
-                          margin: 1.5rem 0;
-                        }
-                        
-                        /* Reset all inline styles */
-                        .job-description-content *[style] {
-                          color: inherit !important;
-                          background: transparent !important;
-                          font-size: inherit !important;
-                          font-family: inherit !important;
-                          text-align: inherit !important;
-                        }
-                      `}</style>
                     </div>
                   </div>
 

@@ -208,10 +208,7 @@ const Page = () => {
         <h1 className="edn__title text-black mb-4">
           Career Opportunities
         </h1>
-        <p className="text-lg text-gray-800 max-w-3xl mx-auto">
-          Discover your next career move with our curated job listings.
-          Search by role, location, or company to find the perfect match.
-        </p>
+        
       </div>
 
       <PlacementCmp />
