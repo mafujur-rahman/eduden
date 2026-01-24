@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { Search, Building2, MapPin, Briefcase, Filter } from "lucide-react";
+import DOMPurify from 'dompurify'; // For safely rendering HTML
 
 export default function PlacementCmp() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,6 +12,29 @@ export default function PlacementCmp() {
   const [selectedJob, setSelectedJob] = useState(null);
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Function to sanitize and render HTML safely
+  const createMarkup = (html) => {
+    return {
+      __html: DOMPurify.sanitize(html || '', {
+        ALLOWED_TAGS: [
+          'p', 'br', 'strong', 'b', 'em', 'i', 'u', 's',
+          'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+          'div', 'span', 'a', 'code', 'pre', 'blockquote',
+          'table', 'thead', 'tbody', 'tr', 'th', 'td'
+        ],
+        ALLOWED_ATTRS: ['href', 'target', 'rel', 'class', 'style', 'align']
+      })
+    };
+  };
+
+  // Function to extract plain text from HTML for search
+  const stripHtml = (html) => {
+    if (!html) return '';
+    const tmp = document.createElement('DIV');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+  };
 
   // Fetch jobs from API
   useEffect(() => {
@@ -58,6 +82,7 @@ export default function PlacementCmp() {
           salary: job.salary,
           experience: job.experience,
           description: job.description,
+          descriptionPlain: stripHtml(job.description || ''), // Store plain text for search
           postedDate: job.posted_date,
           remote: job.remote_available === "Yes",
           deadline: job.deadline,
@@ -76,13 +101,13 @@ export default function PlacementCmp() {
     }
   };
 
-  // Filter jobs based on search criteria 
+  // Filter jobs based on search criteria
   const filteredJobs = useMemo(() => {
     return jobs.filter(job => {
       const matchesSearch = searchQuery === "" ||
         job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         job.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        job.description.toLowerCase().includes(searchQuery.toLowerCase());
+        job.descriptionPlain.toLowerCase().includes(searchQuery.toLowerCase()); // Use plain text for search
 
       const matchesType = selectedType === "All" || job.type === selectedType;
       const matchesRemote = !remoteOnly || job.remote;
@@ -117,7 +142,7 @@ export default function PlacementCmp() {
   // Handle apply button click
   const handleApply = () => {
     if (selectedJob?.sourceUrl) {
-      window.open(selectedJob.sourceUrl, '_blank');
+      window.open(selectedJob.sourceUrl, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -262,9 +287,10 @@ export default function PlacementCmp() {
                         )}
                       </div>
 
+                      {/* Show plain text preview for job list */}
                       <div className="mt-2 sm:mt-3">
                         <p className="text-gray-400 line-clamp-2 text-sm sm:text-base">
-                          {job.description}
+                          {job.descriptionPlain.substring(0, 200)}...
                         </p>
                       </div>
 
@@ -321,7 +347,7 @@ export default function PlacementCmp() {
                 {/* Job Details - Scrollable content */}
                 <div className="p-4 sm:p-6 md:p-8 flex-1 overflow-y-auto">
                   {/* Quick Info */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-4 sm:gap-6 mb-6 sm:mb-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                     <div className="border border-[#ffd300] bg-[#1e1e1e] p-3 sm:p-4 rounded-lg">
                       <p className="text-xs sm:text-sm text-gray-400 mb-1">Location</p>
                       <p className="font-medium flex flex-wrap items-center gap-1 sm:gap-2 text-white text-sm sm:text-base">
@@ -344,17 +370,103 @@ export default function PlacementCmp() {
                     </div>
                   </div>
 
-                  {/* Job Description */}
+                  {/* Job Description - Render HTML properly */}
                   <div className="mb-6 sm:mb-8">
                     <h3 className="text-lg sm:text-xl font-semibold text-[#ffd300] mb-3 sm:mb-4">Job Description</h3>
-                    <div className="prose max-w-none">
-                      <p className="text-gray-300 leading-relaxed text-sm sm:text-base whitespace-pre-line">
-                        {selectedJob.description}
-                      </p>
+                    <div className="prose prose-invert max-w-none">
+                      <div
+                        className="text-gray-300 leading-relaxed text-sm sm:text-base job-description-content"
+                        dangerouslySetInnerHTML={createMarkup(selectedJob.description)}
+                      />
+                      <style jsx>{`
+                        .job-description-content {
+                          font-family: inherit;
+                        }
+                        .job-description-content p {
+                          margin-bottom: 1rem;
+                          line-height: 1.6;
+                        }
+                        .job-description-content ul, 
+                        .job-description-content ol {
+                          margin-left: 1.5rem;
+                          margin-bottom: 1rem;
+                        }
+                        .job-description-content li {
+                          margin-bottom: 0.5rem;
+                        }
+                        .job-description-content h1,
+                        .job-description-content h2,
+                        .job-description-content h3,
+                        .job-description-content h4,
+                        .job-description-content h5,
+                        .job-description-content h6 {
+                          color: #ffd300;
+                          margin-top: 1.5rem;
+                          margin-bottom: 1rem;
+                          font-weight: 600;
+                        }
+                        .job-description-content strong,
+                        .job-description-content b {
+                          color: #fff;
+                          font-weight: 600;
+                        }
+                        .job-description-content em,
+                        .job-description-content i {
+                          font-style: italic;
+                        }
+                        .job-description-content u {
+                          text-decoration: underline;
+                        }
+                        .job-description-content a {
+                          color: #ffd300;
+                          text-decoration: underline;
+                        }
+                        .job-description-content a:hover {
+                          color: #fab80A;
+                        }
+                        .job-description-content blockquote {
+                          border-left: 3px solid #ffd300;
+                          padding-left: 1rem;
+                          margin-left: 0;
+                          color: #ccc;
+                          font-style: italic;
+                        }
+                        .job-description-content code {
+                          background: rgba(255, 211, 0, 0.1);
+                          padding: 0.2rem 0.4rem;
+                          border-radius: 0.25rem;
+                          font-family: monospace;
+                          color: #ffd300;
+                        }
+                        .job-description-content pre {
+                          background: #1a1a1a;
+                          padding: 1rem;
+                          border-radius: 0.5rem;
+                          overflow-x: auto;
+                          margin-bottom: 1rem;
+                        }
+                        .job-description-content table {
+                          width: 100%;
+                          border-collapse: collapse;
+                          margin-bottom: 1rem;
+                        }
+                        .job-description-content th {
+                          background: rgba(255, 211, 0, 0.2);
+                          color: #ffd300;
+                          padding: 0.75rem;
+                          text-align: left;
+                          border: 1px solid #333;
+                        }
+                        .job-description-content td {
+                          padding: 0.75rem;
+                          border: 1px solid #333;
+                        }
+                        .job-description-content tr:nth-child(even) {
+                          background: rgba(255, 255, 255, 0.05);
+                        }
+                      `}</style>
                     </div>
                   </div>
-
-                 
 
                   {/* Job Details */}
                   <div className="space-y-4 sm:space-y-6">
