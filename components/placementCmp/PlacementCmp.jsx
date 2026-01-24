@@ -58,7 +58,6 @@ export default function PlacementCmp() {
           salary: job.salary,
           experience: job.experience,
           description: job.description,
-          requirements: job.requirements ? job.requirements.split("\r\n").filter(r => r.trim()) : [],
           postedDate: job.posted_date,
           remote: job.remote_available === "Yes",
           deadline: job.deadline,
@@ -355,20 +354,7 @@ export default function PlacementCmp() {
                     </div>
                   </div>
 
-                  {/* Requirements */}
-                  <div className="mb-6 sm:mb-8">
-                    <h3 className="text-lg sm:text-xl font-semibold text-[#ffd300] mb-3 sm:mb-4">Requirements</h3>
-                    <div className="flex flex-wrap gap-2 sm:gap-3">
-                      {selectedJob.requirements.map((req, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1.5 sm:px-4 sm:py-2 border border-[#ffd300] text-[#ffd300] rounded-full font-medium text-xs sm:text-sm"
-                        >
-                          {req}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                 
 
                   {/* Job Details */}
                   <div className="space-y-4 sm:space-y-6">
