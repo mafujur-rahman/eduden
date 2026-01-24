@@ -58,7 +58,7 @@ const LoginModal = ({ onLogin, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 animate-fadeIn">
-      <div className="bg-[#111] rounded-2xl p-8 max-w-md w-full relative animate-scaleIn shadow-2xl border border-white/10">
+      <div className="bg-[#111111] rounded-2xl p-8 max-w-md w-full relative animate-scaleIn shadow-2xl border border-white/10">
 
         {/* Close Button */}
         <button

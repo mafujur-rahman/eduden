@@ -137,7 +137,7 @@ export default function PlacementCmp() {
 
   if (loading) {
     return (
-      <section className="min-h-screen bg-black py-8 sm:py-12 md:py-16 lg:py-20">
+      <section className="min-h-screen bg-[#111111] py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 mx-auto max-w-[1920px]">
           <div className="flex items-center justify-center min-h-[60vh]">
             <div className="text-center">
@@ -163,7 +163,7 @@ export default function PlacementCmp() {
                 <input
                   type="text"
                   placeholder="Search jobs by title, company, or keyword..."
-                  className="w-full pl-9 sm:pl-10 pr-4 py-2.5 sm:py-3 border text-white border-[#ffd300] bg-black rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ffd300] focus:border-transparent text-sm sm:text-base"
+                  className="w-full pl-9 sm:pl-10 pr-4 py-2.5 sm:py-3 border text-white border-[#ffd300] bg-[#111111] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ffd300] focus:border-transparent text-sm sm:text-base"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && refreshJobs()}
@@ -173,7 +173,7 @@ export default function PlacementCmp() {
 
             <div className="flex flex-wrap sm:flex-nowrap gap-2">
               <select
-                className="px-3 sm:px-4 py-2.5 sm:py-3 border border-[#ffd300] bg-black text-white rounded-lg focus:ring-2 focus:ring-[#ffd300] focus:border-transparent text-sm sm:text-base flex-1 min-w-[140px]"
+                className="px-3 sm:px-4 py-2.5 sm:py-3 border border-[#ffd300] bg-[#111111] text-white rounded-lg focus:ring-2 focus:ring-[#ffd300] focus:border-transparent text-sm sm:text-base flex-1 min-w-[140px]"
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
               >
@@ -183,7 +183,7 @@ export default function PlacementCmp() {
               </select>
 
               <select
-                className="px-3 sm:px-4 py-2.5 sm:py-3 border border-[#ffd300] bg-black text-white rounded-lg focus:ring-2 focus:ring-[#ffd300] focus:border-transparent text-sm sm:text-base flex-1 min-w-[140px]"
+                className="px-3 sm:px-4 py-2.5 sm:py-3 border border-[#ffd300] bg-[#111111] text-white rounded-lg focus:ring-2 focus:ring-[#ffd300] focus:border-transparent text-sm sm:text-base flex-1 min-w-[140px]"
                 value={selectedExperience}
                 onChange={(e) => setSelectedExperience(e.target.value)}
               >
@@ -199,7 +199,7 @@ export default function PlacementCmp() {
             <button
               className={`px-3 sm:px-4 py-2 rounded-lg flex items-center gap-2 text-sm sm:text-base ${remoteOnly
                 ? "bg-[#ffd300] text-black border border-[#ffd300]"
-                : "bg-black text-white border border-[#ffd300] hover:opacity-90"
+                : "bg-[#111111] text-white border border-[#ffd300] hover:opacity-90"
                 }`}
               onClick={() => setRemoteOnly(!remoteOnly)}
             >
@@ -221,8 +221,8 @@ export default function PlacementCmp() {
                 <div
                   key={job.id}
                   className={`p-4 sm:p-5 md:p-6 rounded-xl border cursor-pointer transition-all duration-200 hover:shadow-lg ${selectedJob?.id === job.id
-                    ? "border-[#ffd300] bg-black shadow-md"
-                    : "border-[#ffd300] bg-black hover:opacity-90"
+                    ? "border-[#ffd300] bg-[#111111] shadow-md"
+                    : "border-[#ffd300] bg-[#111111] hover:opacity-90"
                     }`}
                   onClick={() => setSelectedJob(job)}
                 >
@@ -301,7 +301,7 @@ export default function PlacementCmp() {
           {/* Job Details */}
           <div className="lg:w-3/5">
             {selectedJob ? (
-              <div className="bg-black rounded-2xl border border-[#ffd300] overflow-hidden flex flex-col h-full">
+              <div className="bg-[#111111] rounded-2xl border border-[#ffd300] overflow-hidden flex flex-col h-full">
                 {/* Header with gradient */}
                 <div className="bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] p-4 sm:p-6 md:p-8 text-gray-900">
                   <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
@@ -311,7 +311,7 @@ export default function PlacementCmp() {
                     </div>
                     <button
                       onClick={handleApply}
-                      className="bg-black text-[#ffd300] hover:opacity-90 px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-colors border border-[#ffd300] shadow-sm text-sm sm:text-base w-full sm:w-auto"
+                      className="bg-[#111111] text-[#ffd300] hover:opacity-90 px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-colors border border-[#ffd300] shadow-sm text-sm sm:text-base w-full sm:w-auto"
                       disabled={!selectedJob.sourceUrl}
                     >
                       {selectedJob.sourceUrl ? "Apply Now" : "Apply Details"}
@@ -322,8 +322,8 @@ export default function PlacementCmp() {
                 {/* Job Details - Scrollable content */}
                 <div className="p-4 sm:p-6 md:p-8 flex-1 overflow-y-auto">
                   {/* Quick Info */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
-                    <div className="border border-[#ffd300] p-3 sm:p-4 rounded-lg">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-4 sm:gap-6 mb-6 sm:mb-8">
+                    <div className="border border-[#ffd300] bg-[#1e1e1e] p-3 sm:p-4 rounded-lg">
                       <p className="text-xs sm:text-sm text-gray-400 mb-1">Location</p>
                       <p className="font-medium flex flex-wrap items-center gap-1 sm:gap-2 text-white text-sm sm:text-base">
                         <MapPin className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
@@ -335,11 +335,11 @@ export default function PlacementCmp() {
                         )}
                       </p>
                     </div>
-                    <div className="border border-[#ffd300] p-3 sm:p-4 rounded-lg">
+                    <div className="border border-[#ffd300] bg-[#1e1e1e] p-3 sm:p-4 rounded-lg">
                       <p className="text-xs sm:text-sm text-gray-400 mb-1">Salary Range</p>
                       <p className="font-medium text-white text-sm sm:text-base">{selectedJob.salary}</p>
                     </div>
-                    <div className="border border-[#ffd300] p-3 sm:p-4 rounded-lg">
+                    <div className="border border-[#ffd300] bg-[#1e1e1e] p-3 sm:p-4 rounded-lg">
                       <p className="text-xs sm:text-sm text-gray-400 mb-1">Experience Required</p>
                       <p className="font-medium text-white text-sm sm:text-base">{selectedJob.experience}</p>
                     </div>
@@ -414,7 +414,7 @@ export default function PlacementCmp() {
                 </div>
               </div>
             ) : (
-              <div className="bg-black rounded-2xl border border-[#ffd300] p-6 sm:p-8 md:p-12 text-center h-full flex flex-col justify-center">
+              <div className="bg-[#111111] rounded-2xl border border-[#ffd300] p-6 sm:p-8 md:p-12 text-center h-full flex flex-col justify-center">
                 <div className="text-[#ffd300] mb-4 sm:mb-6">
                   <Briefcase className="h-12 w-12 sm:h-16 sm:w-16 mx-auto" />
                 </div>

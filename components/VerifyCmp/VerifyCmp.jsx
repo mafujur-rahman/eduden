@@ -114,7 +114,7 @@ export default function VerifyCmp() {
                 <div className="relative rounded-2xl">
                     {/* Gradient stroke */}
                     <span className="absolute inset-0 p-[1px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                        <span className="block h-full w-full bg-black rounded-2xl" /> 
+                        <span className="block h-full w-full bg-[#111111] rounded-2xl" /> 
                     </span>
 
                     <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 px-4 sm:px-10 py-4 sm:py-6">
@@ -126,7 +126,7 @@ export default function VerifyCmp() {
                                 onChange={(e) => setQuery(e.target.value)}
                                 onKeyPress={handleKeyPress}
                                 placeholder="Enter credential ID or student batch ID"
-                                className="flex-1 bg-transparent outline-none text-base sm:text-lg tracking-wide text-white placeholder-gray-400"
+                                className="flex-1 bg-transparent outline-none text-base sm:text-lg tracking-wide  text-white placeholder-gray-400"
                             />
                         </div>
 
@@ -163,7 +163,7 @@ export default function VerifyCmp() {
                 <div className="verify-sheet max-w-6xl mx-auto mt-28">
                     {/* Identity Sheet */}
                     <div className="relative p-[2px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                        <div className="px-6 xl:px-16 py-7 xl:py-14 rounded-2xl bg-black">
+                        <div className="px-6 xl:px-16 py-7 xl:py-14 rounded-2xl bg-[#111111]">
                             {/* Header */}
                             <div className="flex justify-between items-end">
                                 <div>
@@ -222,7 +222,7 @@ export default function VerifyCmp() {
                                             },
                                         ].map((item) => (
                                             <div key={item.label} className="relative p-[1px] bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] rounded-2xl">
-                                                <div className="flex items-center gap-2 md:gap-6 px-2 md:px-6 py-2 md:py-4 rounded-2xl bg-black">
+                                                <div className="flex items-center gap-2 md:gap-6 px-2 md:px-6 py-2 md:py-4 rounded-2xl bg-[#1e1e1e]">
                                                     <div className="text-xl">{item.icon}</div>
                                                     <div className="flex justify-between items-center w-full">
                                                         <span className="text-gray-400 tracking-wide">{item.label}</span>
