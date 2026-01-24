@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { Search, Building2, MapPin, Briefcase, Filter } from "lucide-react";
-import DOMPurify from 'dompurify'; // For safely rendering HTML
+import DOMPurify from 'dompurify';
 
 export default function PlacementCmp() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -13,17 +13,60 @@ export default function PlacementCmp() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Function to clean HTML and remove unwanted styles
+  const cleanHtml = (html) => {
+    if (!html) return '';
+    
+    // Remove style attributes and background colors
+    let cleaned = html.replace(/style="[^"]*"/gi, '');
+    
+    // Remove specific background styles
+    cleaned = cleaned.replace(/background(-color)?:\s*[^;"]*;?/gi, '');
+    
+    // Remove bgcolor attributes
+    cleaned = cleaned.replace(/bgcolor="[^"]*"/gi, '');
+    
+    // Remove class attributes
+    cleaned = cleaned.replace(/class="[^"]*"/gi, '');
+    
+    // Remove data-* attributes
+    cleaned = cleaned.replace(/data-[^=]*="[^"]*"/gi, '');
+    
+    // Remove span tags without any attributes or with only style attributes
+    cleaned = cleaned.replace(/<span[^>]*>([^<]*)<\/span>/gi, '$1');
+    
+    // Remove empty style attributes
+    cleaned = cleaned.replace(/style=""/gi, '');
+    
+    // Remove font tags
+    cleaned = cleaned.replace(/<font[^>]*>([^<]*)<\/font>/gi, '$1');
+    
+    // Remove align attributes
+    cleaned = cleaned.replace(/align="[^"]*"/gi, '');
+    
+    // Clean up table attributes
+    cleaned = cleaned.replace(/<table[^>]*>/gi, '<table>');
+    cleaned = cleaned.replace(/<td[^>]*>/gi, '<td>');
+    cleaned = cleaned.replace(/<tr[^>]*>/gi, '<tr>');
+    cleaned = cleaned.replace(/<th[^>]*>/gi, '<th>');
+    
+    return cleaned;
+  };
+
   // Function to sanitize and render HTML safely
   const createMarkup = (html) => {
+    const cleanedHtml = cleanHtml(html || '');
+    
     return {
-      __html: DOMPurify.sanitize(html || '', {
+      __html: DOMPurify.sanitize(cleanedHtml, {
         ALLOWED_TAGS: [
-          'p', 'br', 'strong', 'b', 'em', 'i', 'u', 's',
+          'p', 'br', 'strong', 'b', 'em', 'i', 'u', 's', 'strike',
           'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
           'div', 'span', 'a', 'code', 'pre', 'blockquote',
           'table', 'thead', 'tbody', 'tr', 'th', 'td'
         ],
-        ALLOWED_ATTRS: ['href', 'target', 'rel', 'class', 'style', 'align']
+        ALLOWED_ATTRS: ['href', 'target', 'rel'],
+        FORBID_ATTRS: ['style', 'class', 'bgcolor', 'background', 'data-*']
       })
     };
   };
@@ -82,7 +125,7 @@ export default function PlacementCmp() {
           salary: job.salary,
           experience: job.experience,
           description: job.description,
-          descriptionPlain: stripHtml(job.description || ''), // Store plain text for search
+          descriptionPlain: stripHtml(job.description || ''),
           postedDate: job.posted_date,
           remote: job.remote_available === "Yes",
           deadline: job.deadline,
@@ -107,7 +150,7 @@ export default function PlacementCmp() {
       const matchesSearch = searchQuery === "" ||
         job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         job.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        job.descriptionPlain.toLowerCase().includes(searchQuery.toLowerCase()); // Use plain text for search
+        job.descriptionPlain.toLowerCase().includes(searchQuery.toLowerCase());
 
       const matchesType = selectedType === "All" || job.type === selectedType;
       const matchesRemote = !remoteOnly || job.remote;
@@ -115,7 +158,6 @@ export default function PlacementCmp() {
       // Experience level matching logic
       let matchesExperience = true;
       if (selectedExperience !== "All") {
-        // Extract years from experience string (e.g., "3+ years" -> 3)
         const expMatch = job.experience.match(/(\d+)\+/);
         if (expMatch) {
           const expYears = parseInt(expMatch[1]);
@@ -144,13 +186,6 @@ export default function PlacementCmp() {
     if (selectedJob?.sourceUrl) {
       window.open(selectedJob.sourceUrl, '_blank', 'noopener,noreferrer');
     }
-  };
-
-  // Handle logout
-  const handleLogout = () => {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('user');
-    window.location.reload();
   };
 
   // Refresh jobs
@@ -370,30 +405,34 @@ export default function PlacementCmp() {
                     </div>
                   </div>
 
-                  {/* Job Description - Render HTML properly */}
+                  {/* Job Description - Clean HTML rendering */}
                   <div className="mb-6 sm:mb-8">
                     <h3 className="text-lg sm:text-xl font-semibold text-[#ffd300] mb-3 sm:mb-4">Job Description</h3>
-                    <div className="prose prose-invert max-w-none">
-                      <div
-                        className="text-gray-300 leading-relaxed text-sm sm:text-base job-description-content"
+                    <div className="job-description-wrapper">
+                      <div 
+                        className="job-description-content"
                         dangerouslySetInnerHTML={createMarkup(selectedJob.description)}
                       />
-                      <style jsx>{`
+                      <style jsx global>{`
                         .job-description-content {
+                          color: #d1d5db;
                           font-family: inherit;
-                        }
-                        .job-description-content p {
-                          margin-bottom: 1rem;
                           line-height: 1.6;
                         }
-                        .job-description-content ul, 
-                        .job-description-content ol {
-                          margin-left: 1.5rem;
+                        
+                        /* Remove all backgrounds */
+                        .job-description-content * {
+                          background-color: transparent !important;
+                          background: none !important;
+                        }
+                        
+                        /* Paragraph styling */
+                        .job-description-content p {
                           margin-bottom: 1rem;
+                          color: #d1d5db;
                         }
-                        .job-description-content li {
-                          margin-bottom: 0.5rem;
-                        }
+                        
+                        /* Headings */
                         .job-description-content h1,
                         .job-description-content h2,
                         .job-description-content h3,
@@ -405,64 +444,151 @@ export default function PlacementCmp() {
                           margin-bottom: 1rem;
                           font-weight: 600;
                         }
+                        
+                        .job-description-content h1 { font-size: 1.5rem; }
+                        .job-description-content h2 { font-size: 1.375rem; }
+                        .job-description-content h3 { font-size: 1.25rem; }
+                        .job-description-content h4 { font-size: 1.125rem; }
+                        .job-description-content h5 { font-size: 1rem; }
+                        .job-description-content h6 { font-size: 0.875rem; }
+                        
+                        /* Lists */
+                        .job-description-content ul,
+                        .job-description-content ol {
+                          margin-left: 1.5rem;
+                          margin-bottom: 1rem;
+                          color: #d1d5db;
+                        }
+                        
+                        .job-description-content li {
+                          margin-bottom: 0.5rem;
+                        }
+                        
+                        .job-description-content ul {
+                          list-style-type: disc;
+                        }
+                        
+                        .job-description-content ol {
+                          list-style-type: decimal;
+                        }
+                        
+                        /* Text formatting */
                         .job-description-content strong,
                         .job-description-content b {
-                          color: #fff;
+                          color: #ffffff;
                           font-weight: 600;
                         }
+                        
                         .job-description-content em,
                         .job-description-content i {
                           font-style: italic;
+                          color: #d1d5db;
                         }
+                        
                         .job-description-content u {
                           text-decoration: underline;
+                          color: #d1d5db;
                         }
+                        
+                        .job-description-content s,
+                        .job-description-content strike {
+                          text-decoration: line-through;
+                          color: #9ca3af;
+                        }
+                        
+                        /* Links */
                         .job-description-content a {
                           color: #ffd300;
                           text-decoration: underline;
                         }
+                        
                         .job-description-content a:hover {
                           color: #fab80A;
                         }
-                        .job-description-content blockquote {
-                          border-left: 3px solid #ffd300;
-                          padding-left: 1rem;
-                          margin-left: 0;
-                          color: #ccc;
-                          font-style: italic;
-                        }
+                        
+                        /* Code and pre blocks */
                         .job-description-content code {
-                          background: rgba(255, 211, 0, 0.1);
+                          background: rgba(255, 211, 0, 0.1) !important;
                           padding: 0.2rem 0.4rem;
                           border-radius: 0.25rem;
-                          font-family: monospace;
+                          font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
                           color: #ffd300;
+                          font-size: 0.875rem;
                         }
+                        
                         .job-description-content pre {
-                          background: #1a1a1a;
+                          background: #1a1a1a !important;
                           padding: 1rem;
                           border-radius: 0.5rem;
                           overflow-x: auto;
                           margin-bottom: 1rem;
+                          border: 1px solid #333;
                         }
+                        
+                        .job-description-content pre code {
+                          background: transparent !important;
+                          padding: 0;
+                        }
+                        
+                        /* Blockquotes */
+                        .job-description-content blockquote {
+                          border-left: 3px solid #ffd300;
+                          padding-left: 1rem;
+                          margin-left: 0;
+                          color: #9ca3af;
+                          font-style: italic;
+                          margin-bottom: 1rem;
+                        }
+                        
+                        /* Tables */
                         .job-description-content table {
                           width: 100%;
                           border-collapse: collapse;
                           margin-bottom: 1rem;
+                          border: 1px solid #333;
                         }
+                        
                         .job-description-content th {
-                          background: rgba(255, 211, 0, 0.2);
+                          background: rgba(255, 211, 0, 0.2) !important;
                           color: #ffd300;
                           padding: 0.75rem;
                           text-align: left;
                           border: 1px solid #333;
+                          font-weight: 600;
                         }
+                        
                         .job-description-content td {
                           padding: 0.75rem;
                           border: 1px solid #333;
+                          color: #d1d5db;
                         }
+                        
                         .job-description-content tr:nth-child(even) {
-                          background: rgba(255, 255, 255, 0.05);
+                          background: rgba(255, 255, 255, 0.03) !important;
+                        }
+                        
+                        /* Div and span reset */
+                        .job-description-content div,
+                        .job-description-content span {
+                          color: inherit;
+                          background: transparent !important;
+                          display: inline;
+                        }
+                        
+                        /* Horizontal rule */
+                        .job-description-content hr {
+                          border: none;
+                          border-top: 1px solid #333;
+                          margin: 1.5rem 0;
+                        }
+                        
+                        /* Reset all inline styles */
+                        .job-description-content *[style] {
+                          color: inherit !important;
+                          background: transparent !important;
+                          font-size: inherit !important;
+                          font-family: inherit !important;
+                          text-align: inherit !important;
                         }
                       `}</style>
                     </div>
