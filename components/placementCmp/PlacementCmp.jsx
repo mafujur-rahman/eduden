@@ -358,7 +358,8 @@ export default function PlacementCmp() {
           {/* Job Details */}
           <div className="lg:w-3/5">
             {selectedJob ? (
-              <div className="bg-[#111111] rounded-2xl border border-[#ffd300] overflow-hidden flex flex-col h-full">
+              <div className="bg-[#111111] rounded-2xl border border-[#ffd300] overflow-hidden flex flex-col">
+
                 {/* Header with gradient */}
                 <div className="bg-gradient-to-r from-[#fab80A] via-[#fcc405] to-[#fecf01] p-4 sm:p-6 md:p-8 text-gray-900">
                   <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
@@ -377,7 +378,7 @@ export default function PlacementCmp() {
                 </div>
 
                 {/* Job Details - Scrollable content */}
-                <div className="p-4 sm:p-6 md:p-8 flex-1 overflow-y-auto">
+                <div className="p-4 sm:p-6 md:p-8 ">
                   {/* Quick Info */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                     <div className="border border-[#ffd300] bg-[#1e1e1e] p-3 sm:p-4 rounded-lg">
